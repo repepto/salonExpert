@@ -1,0 +1,31 @@
+{% extends "salonExpert/index.html" %}
+{% load staticfiles %}
+{%  block addCSS %}<link rel="stylesheet" href="{% static "css/services.css" %}">{% endblock %}
+{%  block addJS %}<script src="{% static "js/services.js" %}"></script>{%  endblock %}
+{%  block a1 %}<span>УСЛУГИ</span>{%  endblock %}
+{%  block content %}
+<section class="width100 left allServices">
+    {% for service in servList %}
+    <article class="service left">
+        <div class="scrollPan">
+            <h1>{{ service.header }}</h1>
+            {% if service.work_set.all|length > 2 %}
+            <span id="r{{ service.id }}" class="bService right bb na">></span>
+            <span id="l{{ service.id }}" class="bService right bb nav"><</span>
+            {% endif %}
+            <!--<a href="" class="bService right">&nbsp;&nbsp;подробнее&nbsp;&nbsp;</a>-->
+        </div>
+        <div class="scrollAbleBox">
+            <div id="s{{ service.id }}" class="scrollAble">
+                {% for work in service.workpreview_set.all %}{{ work.service }}";"{{ service.id }}
+                    <img class="serviceImg" src={{ work.photo.url }} id={{ work.photo.url }} >
+                {% endfor %}
+            </div>
+        </div>
+        <div class="serviceDiv">
+            <div class="val">{{ service.description|safe }}</div>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}
