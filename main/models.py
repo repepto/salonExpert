@@ -35,16 +35,21 @@ class Service(models.Model):
         return self.header
 
 
-class WorkPreview(models.Model):
-    service = models.ForeignKey(Service)
-    photo = models.ImageField(verbose_name='Маленькая фотография для предпросмотра(120 на 120):')
-    def __str__(self):              # __unicode__ on Python 2
-        return "Эта работа относится к услуге: " + self.service.header
-
 class Work(models.Model):
-    workPreview = models.OneToOneField(WorkPreview)
+    service = models.ForeignKey(Service)
     photo = models.ImageField()
     header = models.CharField(max_length=40)
     description = models.TextField()
+
+
     def __str__(self):              # __unicode__ on Python 2
         return "Фотография большая (600 на 600): " + self.service.header
+
+
+class WorkPreview(models.Model):
+    photo = models.ImageField(verbose_name='Фотография:')
+    work = models.OneToOneField(Work)
+
+
+    def __str__(self):              # __unicode__ on Python 2
+        return "Эта работа относится к услуге: " + self.service.header

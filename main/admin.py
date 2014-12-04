@@ -11,6 +11,15 @@ from django.db import models
 admin.site.register(Staff)
 #admin.site.register(Services)
 
+
+class WorkPreviewInline(NestedStackedInline):
+    model = WorkPreview
+    fieldsets = [
+        ('Фотография предпросмотра (120 на 120)', {'fields': ['photo']}),
+    ]
+    extra = 1
+
+
 class WorkInline(NestedStackedInline):
     model = Work
     fieldsets = [
@@ -18,15 +27,7 @@ class WorkInline(NestedStackedInline):
         ('Фотография работы (600 на 600)', {'fields': ['photo']}),
         ('Описание работы', {'fields': ['description']}),
     ]
-    extra = 1
-
-
-class WorkPreviewInline(NestedStackedInline):
-    model = WorkPreview
-    fieldsets = [
-        ('Фотография предпросмотра (120 на 120)', {'fields': ['photo']}),
-    ]
-    inlines = [WorkInline]
+    inlines = [WorkPreviewInline]
     extra = 1
 
 
@@ -35,6 +36,6 @@ class ServicesAdmin(NestedModelAdmin):
         (None, {'fields': ['header']}),
         (None, {'fields': ['description']}),
     ]
-    inlines = [WorkPreviewInline]
+    inlines = [WorkInline]
 
 admin.site.register(Service, ServicesAdmin)
