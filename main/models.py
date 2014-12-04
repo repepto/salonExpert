@@ -4,14 +4,14 @@ from redactor.fields import RedactorField
 # Create your models here.
 
 class Staff(models.Model):
-    name = models.CharField(max_length=40)
-    occupation = models.CharField(max_length=50)
-    photo = models.ImageField()
+    name = models.CharField(max_length=40, verbose_name='имя мастера')
+    occupation = models.CharField(max_length=50, verbose_name='что делает')
+    photo = models.ImageField(verbose_name='фотография мастера')
     #text = models.TextField(max_length=400)
     description = RedactorField(
-    verbose_name=u'Text',
+    verbose_name=u'Описание услуги',
     redactor_options={'lang': 'en', 'focus': 'true'},
-    upload_to='uploads/',
+    #upload_to='uploads/',
     allow_file_upload=False,
     allow_image_upload=False
     )
@@ -22,9 +22,9 @@ class Staff(models.Model):
 
 
 class Service(models.Model):
-    header = models.CharField(max_length=40)
+    header = models.CharField(max_length=40, verbose_name='Название услуги')
     description = RedactorField(
-    verbose_name=u'Text',
+    verbose_name='Описание услуги',
     redactor_options={'lang': 'en', 'focus': 'true'},
     #upload_to='uploads/',
     allow_file_upload=False,
@@ -37,4 +37,14 @@ class Service(models.Model):
 
 class WorkPreview(models.Model):
     service = models.ForeignKey(Service)
+    photo = models.ImageField(verbose_name='Маленькая фотография для предпросмотра(120 на 120):')
+    def __str__(self):              # __unicode__ on Python 2
+        return "Эта работа относится к услуге: " + self.service.header
+
+class Work(models.Model):
+    workPreview = models.OneToOneField(WorkPreview)
     photo = models.ImageField()
+    header = models.CharField(max_length=40)
+    description = models.TextField()
+    def __str__(self):              # __unicode__ on Python 2
+        return "Фотография большая (600 на 600): " + self.service.header

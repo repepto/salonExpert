@@ -1,9 +1,9 @@
 from django.contrib import admin
 #from django import forms
 #from redactor.widgets import RedactorEditor
-from main.models import Staff
-from main.models import Service
-from main.models import WorkPreview
+
+from nested_inline.admin import NestedStackedInline, NestedModelAdmin
+from main.models import *
 from django.db import models
 
 # Register your models here.
@@ -11,18 +11,28 @@ from django.db import models
 admin.site.register(Staff)
 #admin.site.register(Services)
 
-
-class WorkPreviewInline(admin.StackedInline):
-    model = WorkPreview
+class WorkInline(NestedStackedInline):
+    model = Work
     fieldsets = [
-        ('photo',               {'fields': ['photo']}),
+        ('Заголовок работы', {'fields': ['header']}),
+        ('Фотография работы (600 на 600)', {'fields': ['photo']}),
+        ('Описание работы', {'fields': ['description']}),
     ]
     extra = 1
 
 
-class ServicesAdmin(admin.ModelAdmin):
+class WorkPreviewInline(NestedStackedInline):
+    model = WorkPreview
     fieldsets = [
-        (None,               {'fields': ['header']}),
+        ('Фотография предпросмотра (120 на 120)', {'fields': ['photo']}),
+    ]
+    inlines = [WorkInline]
+    extra = 1
+
+
+class ServicesAdmin(NestedModelAdmin):
+    fieldsets = [
+        (None, {'fields': ['header']}),
         (None, {'fields': ['description']}),
     ]
     inlines = [WorkPreviewInline]
