@@ -5,28 +5,30 @@
 {%  block a1 %}<span>УСЛУГИ</span>{%  endblock %}
 {%  block content %}
 <section class="width100 left allServices">
-    {% for service in servList %}
-    <article class="service left">
-        <div class="scrollPan">
-            <h1>{{ service.header }}</h1>
-            {% if service.work_set.all|length > 2 %}
-            <span id="r{{ service.id }}" class="bService right bb na">></span>
-            <span id="l{{ service.id }}" class="bService right bb nav"><</span>
-            {% endif %}
-            <!--<a href="" class="bService right">&nbsp;&nbsp;подробнее&nbsp;&nbsp;</a>-->
+{{servList.0.2.1.1}}
+
+{% for service in servList %}
+<article class="service left">
+    <div class="scrollPan">
+        <h1>{{ service.0 }}</h1>
+        {% if service.work_set.all|length > 2 %}
+        <span id="r{{ service.id }}" class="bService right bb na">></span>
+        <span id="l{{ service.id }}" class="bService right bb nav"><</span>
+        {% endif %}
+        <!--<a href="" class="bService right">&nbsp;&nbsp;подробнее&nbsp;&nbsp;</a>-->
+    </div>
+    <div class="scrollAbleBox">
+        <div id="s{{ service.id }}" class="scrollAble">
+            {% for work in service.2 %}
+                <img class="serviceImg" src={{ work.0 }} id={{ work.1 }} >
+            {% endfor %}
         </div>
-        <div class="scrollAbleBox">
-            <div id="s{{ service.id }}" class="scrollAble">
-                {% for work in service.work_set.all %}
-                    <img class="serviceImg" src={{ work.workPreview.photo.url }} id={{ workPreview.photo.url }} >
-                    {{ work }}
-                {% endfor %}
-            </div>
-        </div>
-        <div class="serviceDiv">
-            <div class="val">{{ service.description|safe }}</div>
-        </div>
-    </article>
-    {% endfor %}
+    </div>
+    <div class="serviceDiv">
+        <div class="val">{{ service.1|safe }}</div>
+    </div>
+</article>
+{% endfor %}
+
 </section>
 {% endblock %}

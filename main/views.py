@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from main.models import Staff
 from main.models import Service
+from main.models import Work
 from django.http import HttpResponse
 import json
 
@@ -14,8 +15,25 @@ def staff(request):
 
 
 def services(request):
-    servList = Service.objects.all()
-    context = {'servList':servList}
+    servListT = Service.objects.all()
+
+    servs=[]
+    serv=[]
+    workT=[]
+
+    for service in servListT:
+
+        serv.append(service.header)
+        serv.append(service.description)
+
+        for work in service.work_set.all():
+            workT.append([work.photo_preview.url, work.id])
+
+        serv.append(workT)
+        servs.append(serv)
+
+
+    context = {'servList':servs}
     return render(request, 'main/services.html', context)
 
 def get_workt(request):

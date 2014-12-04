@@ -38,18 +38,10 @@ class Service(models.Model):
 class Work(models.Model):
     service = models.ForeignKey(Service)
     photo = models.ImageField()
+    photo_preview = models.ImageField()
     header = models.CharField(max_length=40)
     description = models.TextField()
 
 
     def __str__(self):              # __unicode__ on Python 2
         return "Услуга: " + self.service.header + " (презентация работы)"
-
-
-class WorkPreview(models.Model):
-    work = models.OneToOneField(Work)
-    photoPrew = models.ImageField(verbose_name='Фотография:')
-
-
-    def __str__(self):              # __unicode__ on Python 2
-        return "Фотография предпросмотра: " + self.work.service.header
