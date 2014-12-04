@@ -15,7 +15,7 @@ admin.site.register(Staff)
 class WorkPreviewInline(NestedStackedInline):
     model = WorkPreview
     fieldsets = [
-        ('Фотография предпросмотра (120 на 120)', {'fields': ['photo']}),
+        ('Фотография предпросмотра (120 на 120)', {'fields': ['photoPrew']}),
     ]
     extra = 1
 

@@ -22,9 +22,9 @@ class Staff(models.Model):
 
 
 class Service(models.Model):
-    header = models.CharField(max_length=40, verbose_name='Название услуги')
+    header = models.CharField(max_length=40, verbose_name='Услуга')
     description = RedactorField(
-    verbose_name='Описание услуги',
+    verbose_name='Описание',
     redactor_options={'lang': 'en', 'focus': 'true'},
     #upload_to='uploads/',
     allow_file_upload=False,
@@ -43,13 +43,13 @@ class Work(models.Model):
 
 
     def __str__(self):              # __unicode__ on Python 2
-        return "Фотография большая (600 на 600): " + self.service.header
+        return "Услуга: " + self.service.header + " (презентация работы)"
 
 
 class WorkPreview(models.Model):
-    photo = models.ImageField(verbose_name='Фотография:')
     work = models.OneToOneField(Work)
+    photoPrew = models.ImageField(verbose_name='Фотография:')
 
 
     def __str__(self):              # __unicode__ on Python 2
-        return "Эта работа относится к услуге: " + self.service.header
+        return "Фотография предпросмотра: " + self.work.service.header

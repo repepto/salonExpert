@@ -17,8 +17,9 @@
         </div>
         <div class="scrollAbleBox">
             <div id="s{{ service.id }}" class="scrollAble">
-                {% for workPreview in service.workpreview_set.all %}
-                    <img class="serviceImg" src={{ workPreview.photo.url }} id={{ workPreview.photo.url }} >
+                {% for work in service.work_set.all %}
+                    <img class="serviceImg" src={{ work.workPreview.photo.url }} id={{ workPreview.photo.url }} >
+                    {{ work }}
                 {% endfor %}
             </div>
         </div>
