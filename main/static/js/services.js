@@ -192,57 +192,62 @@ $(document).ready(function() {
         minW=wh;
         if(minW>ww)minW=ww;
 
-        boxW=minW-40;
-        if(boxW > 500)boxW=500;
+        var img = new Image()
+        img.src = p_url
+        img.id="dynamic"
+        img.onerror = function (e) { alert('ошибка при загрузке изображения') }
+        img.onload = function (e) {
 
-        boxH=boxW;
+            var header = "<h1 id='workH1' style='background:#bc00f5;padding-left:10px;margin-top:0'>"+hed+"</h1>"
+            var description = "<p id='workP'>" + des + "<br><br></p>"
 
 
 
-        var div = $('<div>').css({
-            position: "absolute",
-            top: $(window).height() / 2 - 45 + $(window).scrollTop() + "px",
-            left: $(window).width() / 2 - 5 + "px",
-            width: 10 + 'px',
-            overflow: "hidden",
-            "background-color": "#000",
-            padding: "20px"
-        });
+            boxW=img.width
+            boxH=img.height
 
-        $('body').eq(0).append(div);
 
-        $(div).animate({opacity:'0'},0);
+            var div = $('<div>').css({
+                position: "absolute",
+                top: $(window).height() / 2 - 45 + $(window).scrollTop() + "px",
+                overflow: "hidden",
+                "background-color": "#303030",
+                padding: "20px"
+            });
+            $(div).css("width", boxW+"px")
+            $('body').eq(0).append(div);
 
-        $(div).animate({
-            width:boxW + "px",
-            top: $(window).height() / 2 - boxW/2 + $(window).scrollTop() + "px",
-            left: $(window).width() / 2 - boxH/2 + "px", opacity:'1'
-        },700,"easeInOutQuart");
+            $(div).addClass("close")
+            $(img).addClass("close")
 
-        var header = "<h1>" + hed + "</h1>"
-        div.append(header);
+            $(div).append(header)
+            div.append(description)
 
-        var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
+            boxH+=$('#workH1').height()
+            boxH+=$('#workP').height()+30
+
+            $(div).css("width", 10+"px")
+
+            div.append(img)
+
+            $(div).animate({opacity:'0'},0);
+
+            $(div).animate({
+                width:boxW + "px",
+                height:boxH + "px",
+                top: wh / 2 - boxH/2+90 + "px",
+                left: ww / 2 - boxW/2-20 + "px" ,
+                opacity:'1'
+            },700,"easeInOutQuart");
+        }
+
+       // var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
 
         //alert(event);
 
-        img.attr('src', p_url);
-        $(img).css({
-             width: 10 + 'px',height: 10 + 'px'
-        });
-        img.appendTo(div);
 
-        $(img).animate({opacity:'0'},0);
 
-        $(img).animate({
-            width:boxW + "px", height:boxH + "px", opacity:'1'
-        },700,"easeInOutQuart");
 
-        var description = "<p><br>" + des + "</p>"
-        div.append(description);
-
-        $(div).addClass("close");
-        $(img).addClass("close");
         $(divB).addClass("close");
 
         $(".close").click(function(event)
