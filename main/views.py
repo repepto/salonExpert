@@ -41,10 +41,15 @@ def get_work(request):
     if request.GET.get('param1'):
         message = request.GET.get('param1')
 
-    stf = Service.objects.get(id=request.GET.get('s_id'))
+    srv = Service.objects.get(id=request.GET.get('s_id'))
+    work = srv.work_set.get(id=request.GET.get('w_id'))
+
+    h=work.header
+    d=work.description
+    p=work.photo.url
 
     #results = {'param1':request.GET.get('param1'), 'param2':'натиснув його!'}
-    results = {'param1':stf.id, 'param2':'натиснув його!'}
+    results = {'h':h, 'd':d, 'p':p}
     #results = {'param1':'aaa', 'param2':'натиснув його!'}
 
     answer = json.dumps(results)

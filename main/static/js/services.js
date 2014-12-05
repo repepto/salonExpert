@@ -162,13 +162,11 @@ $(document).ready(function() {
     {
         $.get("../get_work/", {w_id:event.target.id, s_id:$(event.target).attr("sid")}, function(data) {
                 // Відобразити результат
-                alert(data.param1)
+            bigFotoAdd(data.p, data.h, data.d);
         });
-
-        bigFotoAdd(event.target.id);
     });
 
-    function bigFotoAdd(p_url) {
+    function bigFotoAdd(p_url, hed, des) {
 
         $("html,body").css("overflow","hidden");
 
@@ -195,7 +193,7 @@ $(document).ready(function() {
         if(minW>ww)minW=ww;
 
         boxW=minW-40;
-        if(boxW > 600)boxW=600;
+        if(boxW > 500)boxW=500;
 
         boxH=boxW;
 
@@ -206,7 +204,6 @@ $(document).ready(function() {
             top: $(window).height() / 2 - 45 + $(window).scrollTop() + "px",
             left: $(window).width() / 2 - 5 + "px",
             width: 10 + 'px',
-            height: 10 + 'px',
             overflow: "hidden",
             "background-color": "#000",
             padding: "20px"
@@ -217,12 +214,13 @@ $(document).ready(function() {
         $(div).animate({opacity:'0'},0);
 
         $(div).animate({
-            width:boxW + "px", height:boxH + "px",
+            width:boxW + "px",
             top: $(window).height() / 2 - boxW/2 + $(window).scrollTop() + "px",
             left: $(window).width() / 2 - boxH/2 + "px", opacity:'1'
         },700,"easeInOutQuart");
 
-
+        var header = "<h1>" + hed + "</h1>"
+        div.append(header);
 
         var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
 
@@ -239,6 +237,9 @@ $(document).ready(function() {
         $(img).animate({
             width:boxW + "px", height:boxH + "px", opacity:'1'
         },700,"easeInOutQuart");
+
+        var description = "<p><br>" + des + "</p>"
+        div.append(description);
 
         $(div).addClass("close");
         $(img).addClass("close");
