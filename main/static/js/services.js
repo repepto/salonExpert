@@ -160,6 +160,11 @@ $(document).ready(function() {
 
     $(".serviceImg").click(function(event)
     {
+         $.get("../get_work/", function(data) {
+                // Відобразити результат
+                alert(data.param1)
+        });
+
         bigFotoAdd(event.target.id);
     });
 

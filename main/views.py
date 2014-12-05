@@ -36,12 +36,12 @@ def services(request):
     context = {'servList':servs}
     return render(request, 'main/services.html', context)
 
-def get_workt(request):
+def get_work(request):
     results = {'success':False}
 
     # Тут — потрібні нам алгоритми
-    if True:
-        results = {'success':True, 'param1':'Ти таки', 'param2':'натиснув його!'}
+   #if True:
+    results = {'param1':'Ти таки', 'param2':'натиснув його!'}
 
     answer = json.dumps(results)
-    return HttpResponse(answer, mimetype='application/json')
+    return HttpResponse(answer, content_type="application/json")
