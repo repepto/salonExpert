@@ -160,7 +160,7 @@ $(document).ready(function() {
 
     $(".serviceImg").click(function(event)
     {
-         $.get("../get_work/", function(data) {
+        $.get("../get_work/", {w_id:event.target.id, s_id:$(event.target).attr("sid")}, function(data) {
                 // Відобразити результат
                 alert(data.param1)
         });

@@ -27,7 +27,7 @@ def services(request):
         serv.append(service.description)
 
         for work in service.work_set.all():
-            workT.append([work.photo_preview.url, work.id])
+            workT.append([work.photo_preview.url, work.id, service.id])
 
         serv.append(workT)
         servs.append(serv)
@@ -37,11 +37,15 @@ def services(request):
     return render(request, 'main/services.html', context)
 
 def get_work(request):
-    results = {'success':False}
 
-    # Тут — потрібні нам алгоритми
-   #if True:
-    results = {'param1':'Ти таки', 'param2':'натиснув його!'}
+    if request.GET.get('param1'):
+        message = request.GET.get('param1')
+
+    stf = Service.objects.get(id=request.GET.get('s_id'))
+
+    #results = {'param1':request.GET.get('param1'), 'param2':'натиснув його!'}
+    results = {'param1':stf.id, 'param2':'натиснув його!'}
+    #results = {'param1':'aaa', 'param2':'натиснув його!'}
 
     answer = json.dumps(results)
     return HttpResponse(answer, content_type="application/json")
