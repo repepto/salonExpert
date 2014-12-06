@@ -166,6 +166,15 @@ $(document).ready(function() {
         });
     });
 
+    jQuery.fn.center = function () {
+        this.css("position","absolute");
+        this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
+            $(window).scrollTop()) + "px");
+        this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
+            $(window).scrollLeft()) + "px");
+        return this;
+    }
+
     function bigFotoAdd(p_url, hed, des) {
 
         $("html,body").css("overflow","hidden");
@@ -182,12 +191,19 @@ $(document).ready(function() {
             "background-color": "#000"
         });
 
+        var divCl = $('<div>').css({
+            float:"right",
+            height: "24px",
+            padding: "7px",
+            "padding-bottom": "0"
+        });
+        $(divCl).addClass("nav")
+        $(divCl).append("&nbsp;&nbsp;закрыть&nbsp;&nbsp;")
+
         $('body').eq(0).append(divB);
 
         $(divB).animate({opacity:'0'},0);
         $(divB).animate({opacity:'.87'},700);
-
-        //$(divB).fadeIn('slow');
 
         minW=wh;
         if(minW>ww)minW=ww;
@@ -198,47 +214,55 @@ $(document).ready(function() {
         img.onerror = function (e) { alert('ошибка при загрузке изображения') }
         img.onload = function (e) {
 
-            var header = "<h1 id='workH1' style='background:#bc00f5;padding-left:10px;margin-top:0'>"+hed+"</h1>"
+            var boxW=img.width
+            var boxH=img.height
+
+            var header = "<h1 id='workH1' style='display:inline'>"+ hed+"</h1>"
             var description = "<p id='workP'>" + des + "<br><br></p>"
 
-
-
-            boxW=img.width
-            boxH=img.height
-
-
+            boxW+=40
             var div = $('<div>').css({
-                position: "absolute",
-                top: $(window).height() / 2 - 45 + $(window).scrollTop() + "px",
+                width:boxW+"px",
+                height:0,
                 overflow: "hidden",
                 "background-color": "#303030",
                 padding: "20px"
             });
-            $(div).css("width", boxW+"px")
+            $(div).center()
+
+
+
+            alert($(div).width())
+
+
             $('body').eq(0).append(div);
 
             $(div).addClass("close")
             $(img).addClass("close")
 
             $(div).append(header)
-            div.append(description)
+            $(div).append(divCl)
+            $(div).append(description)
+
+            alert($(div).width())
 
             boxH+=$('#workH1').height()
             boxH+=$('#workP').height()+30
 
-            $(div).css("width", 10+"px")
-
             div.append(img)
 
-            $(div).animate({opacity:'0'},0);
+            var pTop=Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
+                $(window).scrollTop())-$(div).height() + "px"
+            var pLeft=Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
+                $(window).scrollLeft()) + "px"
 
+            $(div).animate({opacity:'0'},0);
             $(div).animate({
-                width:boxW + "px",
                 height:boxH + "px",
-                top: wh / 2 - boxH/2+90 + "px",
-                left: ww / 2 - boxW/2-20 + "px" ,
+                top: pTop,
+                left: pLeft,
                 opacity:'1'
-            },700,"easeInOutQuart");
+            },700,"easeInOutQuart",function(){alert($(div).width())});
         }
 
        // var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
@@ -250,7 +274,7 @@ $(document).ready(function() {
 
         $(divB).addClass("close");
 
-        $(".close").click(function(event)
+        $(divCl).click(function(event)
         {
             bigPhotoRemove();
         });
