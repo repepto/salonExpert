@@ -1,6 +1,19 @@
 $(document).ready(function() {
     res();
 
+    var ua = navigator.userAgent.toLowerCase();
+    var isOpera = (ua.indexOf('opera')  > -1);
+    var isIE = (!isOpera && ua.indexOf('msie') > -1);
+
+    function getDocumentHeight() {
+        return Math.max(document.compatMode != 'CSS1Compat' ? document.body.scrollHeight : document.documentElement.scrollHeight, getViewportHeight());
+    }
+
+    function getViewportHeight() {
+        return ((document.compatMode || isIE) && !isOpera) ? (document.compatMode == 'CSS1Compat') ? document.documentElement.clientHeight : document.body.clientHeight : (document.parentWindow || document.defaultView).innerHeight;
+    }
+
+
     var step;
     var allowClick=true;
 
@@ -98,7 +111,7 @@ $(document).ready(function() {
         {
            $(el).height(maxH + 20)
         });
-        //alert(maxHE)
+
     }
 
     $(window).resize(function()
@@ -110,7 +123,7 @@ $(document).ready(function() {
     {
 
         if(!allowClick)return;
-        //alert(event);
+
         var tempId = event.target.id;
         var dir = -1;
 
@@ -177,17 +190,16 @@ $(document).ready(function() {
 
     function bigFotoAdd(p_url, hed, des) {
 
-        $("html,body").css("overflow","hidden");
-
         wh = $(window).height();
         ww = $(window).width();
 
+
         var divB = $('<div>').css({
             position: "absolute",
-            top:  $(window).scrollTop() + "px",
+            top:  "0px",
             left: "0px",
             width: ww+"px",
-            height: wh+"px",
+            height: getDocumentHeight(),
             "background-color": "#000"
         });
 
@@ -220,7 +232,7 @@ $(document).ready(function() {
             var header = "<h1 id='workH1' style='display:inline'>"+ hed+"</h1>"
             var description = "<p id='workP'>" + des + "<br><br></p>"
 
-            boxW+=40
+            //boxW+=40
             var div = $('<div>').css({
                 width:boxW+"px",
                 height:0,
@@ -231,30 +243,25 @@ $(document).ready(function() {
             $(div).center()
 
 
-
-            alert($(div).width())
-
-
             $('body').eq(0).append(div);
 
-            $(div).addClass("close")
-            $(img).addClass("close")
+            $(div).attr("id","close2")
 
             $(div).append(header)
             $(div).append(divCl)
             $(div).append(description)
-
-            alert($(div).width())
 
             boxH+=$('#workH1').height()
             boxH+=$('#workP').height()+30
 
             div.append(img)
 
-            var pTop=Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
-                $(window).scrollTop())-$(div).height() + "px"
-            var pLeft=Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
-                $(window).scrollLeft()) + "px"
+            var pTop=Math.max(0, (($(window).height() - boxH) / 2) +
+                $(window).scrollTop()) - 20 + "px";
+
+
+            var pLeft=Math.max(0, (($(window).width() - $(div).outerWidth()) / 2) +
+                $(window).scrollLeft()) + "px";
 
             $(div).animate({opacity:'0'},0);
             $(div).animate({
@@ -262,7 +269,7 @@ $(document).ready(function() {
                 top: pTop,
                 left: pLeft,
                 opacity:'1'
-            },700,"easeInOutQuart",function(){alert($(div).width())});
+            },700,"easeInOutQuart");
         }
 
        // var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
@@ -272,7 +279,7 @@ $(document).ready(function() {
 
 
 
-        $(divB).addClass("close");
+        $(divB).attr("id","close1");
 
         $(divCl).click(function(event)
         {
@@ -281,11 +288,16 @@ $(document).ready(function() {
     }
 
     function bigPhotoRemove() {
-        $(".close").animate({
-            width:"0", height:"0",
-            top: $(window).height() / 2 - 5 + $(window).scrollTop() + "px",
-            left: $(window).width() / 2 - 5 + "px", opacity:'0'
-            },700,"easeInOutQuart", function(){$(".close").remove(); $("html,body").css("overflow","auto");}
+        $("#close2").animate({
+                height:"0",
+                opacity:"0",
+                top: "0px"
+            },700,"easeInOutQuart", function(){$("#close2").remove()}
+        );
+
+        $("#close1").animate({
+                opacity:"0"
+            },700,"easeInOutQuart", function(){$("#close1").remove();}
         );
     }
 });
