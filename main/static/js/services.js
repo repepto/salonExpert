@@ -289,7 +289,7 @@ $(document).ready(function() {
 
     function bigPhotoRemove() {
         $("#close2").animate({
-                height:"0",
+                height: $(window).scrollTop() + "px",
                 opacity:"0",
                 top: "0px"
             },700,"easeInOutQuart", function(){$("#close2").remove()}

@@ -283,6 +283,16 @@ nav form
     margin: 0;
 }
 
+.pad20
+{
+    padding: 20px;
+}
+.width400
+{
+    width: 33%;
+    min-width: 100px;
+}
+
 nav a
 {
     padding: 22px;

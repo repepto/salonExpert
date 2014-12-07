@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     #url(r'^$', views.index, name='index'),
     url(r'^services/$', views.services, name='services'),
     url(r'^staff/$', views.staff, name='staff'),
+    url(r'^about/$', views.about, name='about'),
     url(r'^get_work/$', views.get_work, name='get_work'),
 )

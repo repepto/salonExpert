@@ -13,6 +13,11 @@ def staff(request):
     context = {'staffList':staffList,}
     return render(request, 'main/staff.html', context)
 
+def about(request):
+    ab = 11
+    context = {'staffList':ab,}
+    return render(request, 'main/about.html', context)
+
 
 def services(request):
     servListT = Service.objects.all()
