@@ -23,20 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="306">
-              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/static/js/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5289421" vertical-offset="2251" max-vertical-offset="5117">
+            <state vertical-scroll-proportion="84.0" vertical-offset="4616" max-vertical-offset="5117">
               <caret line="148" column="87" selection-start-line="148" selection-start-column="87" selection-end-line="148" selection-end-column="87" />
               <folding />
             </state>
@@ -46,8 +36,58 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/salonExpert/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.230769" vertical-offset="535" max-vertical-offset="1411">
-              <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
+            <state vertical-scroll-proportion="-10.807693" vertical-offset="535" max-vertical-offset="1394">
+              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="staff.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/templates/main/staff.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="714">
+              <caret line="12" column="70" selection-start-line="12" selection-start-column="70" selection-end-line="12" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="staff.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/static/js/staff.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5700389" vertical-offset="2648" max-vertical-offset="3162">
+              <caret line="173" column="5" selection-start-line="173" selection-start-column="5" selection-end-line="173" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="staff.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/static/css/staff.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.8" vertical-offset="2223" max-vertical-offset="2737">
+              <caret line="154" column="7" selection-start-line="154" selection-start-column="4" selection-end-line="154" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/static/css/services.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.84" vertical-offset="1138" max-vertical-offset="1887">
+              <caret line="77" column="7" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+              <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -56,8 +96,8 @@
       <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/static/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4586" max-vertical-offset="11237">
-              <caret line="292" column="4" selection-start-line="292" selection-start-column="4" selection-end-line="292" selection-end-column="4" />
+            <state vertical-scroll-proportion="-9.56" vertical-offset="2787" max-vertical-offset="11322">
+              <caret line="178" column="11" selection-start-line="178" selection-start-column="11" selection-end-line="178" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -66,8 +106,8 @@
       <file leaf-file-name="services.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/templates/main/services.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="629">
-              <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+            <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="629">
+              <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -78,36 +118,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="544">
               <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1122">
-              <caret line="15" column="7" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="901">
-              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="612">
-              <caret line="17" column="76" selection-start-line="17" selection-start-column="76" selection-end-line="17" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -126,14 +136,17 @@
         <option value="$PROJECT_DIR$/salonExpert/urls.py" />
         <option value="$PROJECT_DIR$/salonExpert/settings.py" />
         <option value="$PROJECT_DIR$/main/admin.py" />
-        <option value="$PROJECT_DIR$/main/models.py" />
         <option value="$PROJECT_DIR$/main/templates/main/services.html" />
         <option value="$PROJECT_DIR$/main/urls.py" />
         <option value="$PROJECT_DIR$/main/views.py" />
-        <option value="$PROJECT_DIR$/templates/salonExpert/index.html" />
         <option value="$PROJECT_DIR$/main/templates/main/about.html" />
-        <option value="$PROJECT_DIR$/main/static/css/main.css" />
         <option value="$PROJECT_DIR$/main/static/js/services.js" />
+        <option value="$PROJECT_DIR$/templates/salonExpert/index.html" />
+        <option value="$PROJECT_DIR$/main/static/css/main.css" />
+        <option value="$PROJECT_DIR$/main/models.py" />
+        <option value="$PROJECT_DIR$/main/static/css/staff.css" />
+        <option value="$PROJECT_DIR$/main/templates/main/staff.html" />
+        <option value="$PROJECT_DIR$/main/static/js/staff.js" />
       </list>
     </option>
   </component>
@@ -244,6 +257,50 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="salonExpert" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="salonExpert" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="salonExpert" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="salonExpert" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -562,30 +619,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="612">
-          <caret line="17" column="76" selection-start-line="17" selection-start-column="76" selection-end-line="17" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="612">
-          <caret line="17" column="76" selection-start-line="17" selection-start-column="76" selection-end-line="17" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/static/js/services.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1694" max-vertical-offset="4454">
@@ -843,13 +876,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/templates/main/staff.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="827">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/projects/topLine/salonExpert/salonExpert/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="291" max-vertical-offset="1853">
@@ -886,26 +912,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="884">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
           <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/templates/main/services.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="629">
-          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -926,26 +936,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/static/css/main.css">
+    <entry file="file://$PROJECT_DIR$/main/static/js/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4586" max-vertical-offset="11237">
-          <caret line="292" column="4" selection-start-line="292" selection-start-column="4" selection-end-line="292" selection-end-column="4" />
+        <state vertical-scroll-proportion="84.0" vertical-offset="4616" max-vertical-offset="5117">
+          <caret line="148" column="87" selection-start-line="148" selection-start-column="87" selection-end-line="148" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/templates/main/services.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="629">
+          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/salonExpert/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.230769" vertical-offset="535" max-vertical-offset="1411">
-          <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
+        <state vertical-scroll-proportion="-10.807693" vertical-offset="535" max-vertical-offset="1394">
+          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/static/js/services.js">
+    <entry file="file://$PROJECT_DIR$/main/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5289421" vertical-offset="2251" max-vertical-offset="5117">
-          <caret line="148" column="87" selection-start-line="148" selection-start-column="87" selection-end-line="148" selection-end-column="87" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/static/css/services.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.84" vertical-offset="1138" max-vertical-offset="1887">
+          <caret line="77" column="7" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/templates/main/staff.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="714">
+          <caret line="12" column="70" selection-start-line="12" selection-start-column="70" selection-end-line="12" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/static/css/staff.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.8" vertical-offset="2223" max-vertical-offset="2737">
+          <caret line="154" column="7" selection-start-line="154" selection-start-column="4" selection-end-line="154" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/static/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.56" vertical-offset="2787" max-vertical-offset="11322">
+          <caret line="178" column="11" selection-start-line="178" selection-start-column="11" selection-end-line="178" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/static/js/staff.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5700389" vertical-offset="2648" max-vertical-offset="3162">
+          <caret line="173" column="5" selection-start-line="173" selection-start-column="5" selection-end-line="173" selection-end-column="5" />
           <folding />
         </state>
       </provider>

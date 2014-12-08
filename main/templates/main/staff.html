@@ -3,24 +3,24 @@
 
 {%  block addJS %}<script src="{% static "js/staff.js" %}"></script>{%  endblock %}
 {%  block addCSS %}<link rel="stylesheet" href="{% static "css/staff.css" %}">{% endblock %}
-{%  block a4 %}<span>МАСТЕРА</span>{%  endblock %}
+{%  block a3 %}<span>МАСТЕРА</span>{%  endblock %}
 
 {%  block content %}
 <section id="allStaff">
     <div id ="nobr">
         {% for employee in staffList %}
         <article class="staff">
-            <img src={{ employee.photo.url }} alt="Юля">
+            <img src={{ employee.photo.url }} alt="{{ employee.name }}">
             <div class = "slider" id = "id{{ employee.id }}">
                 <div class="colorBg" id="i{{ employee.id }}">
                      <span class="switcher">
-                         <span class="fontSize22 fontNarrow marginTop10">{{ employee.name }}{{ employee.id }}</span><br>
+                         <span class="fontSize22 fontNarrow marginTop10">{{ employee.name }}</span><br>
                          <span class="marginTop10">{{ employee.occupation }}</span>
                          <img class="icoBox"  id="{{ employee.id }}" src="{% static "img/boxSwitcher.png" %}">
                      </span>
                 </div>
                 <div class="blackBg" id="o{{ employee.id }}">
-                    {{ employee.description|safe }}
+                    <span class="top-20"> {{ employee.description|safe }} </span>
                     <a href="">
                         <img class="signUp" src="{% static "img/signUp.png" %}">
                     </a>

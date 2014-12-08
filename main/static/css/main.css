@@ -283,6 +283,11 @@ nav form
     margin: 0;
 }
 
+.top-20
+{
+    position: relative;
+    top:-20px;
+}
 .pad20
 {
     padding: 20px;

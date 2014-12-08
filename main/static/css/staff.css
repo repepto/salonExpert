@@ -77,10 +77,10 @@
 
 .staff p
 {
-    height: 100px;
+    height: 140px;
     overflow: hidden;
     margin-bottom: 7px;
-    max-width: 270px;
+    width: 100%;
 }
 
 .colorBg
