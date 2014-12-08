@@ -40,77 +40,84 @@ function scrollWidth() {
     return width;
 }
 
-
-function popupServ(p_url, hed, des)
+function popWork(p_url, hed, des)
 {
     var img = new Image()
 
     img.src = p_url
     img.id="dynamic"
     img.onerror = function (e) { alert('ошибка при загрузке изображения') }
+
     img.onload = function (e) {
 
-        var boxW=img.width
-        var boxH=img.height
-
-        var header = "<h1 id='workH1' style='display:inline'>"+ hed+"</h1>"
-        var description = "<p id='workP'>" + des + "<br><br></p>"
-
-        var divCl = $('<div>').css({
-            float:"right",
-            height: "24px",
-            padding: "7px",
-            "padding-bottom": "0"
-        });
-        $(divCl).addClass("nav")
-        $(divCl).append("&nbsp;&nbsp;закрыть&nbsp;&nbsp;")
-
-
-        $(divCl).click(function(event)
-        {
-            popupRemove();
-        });
-
-        var div = $('<div>').css({
-            width:boxW+"px",
-            height:0,
-            overflow: "hidden",
-            "background-color": "#303030",
-            padding: "20px"
-        });
-        $(div).center()
-
-
-        $('body').eq(0).append(div);
-
-        $(div).attr("id","close2")
-
-        $(div).append(header)
-        $(div).append(divCl)
-        $(div).append(description)
-
-        boxH+=$('#workH1').height()
-        boxH+=$('#workP').height()+30
-
-        div.append(img)
-
-        var pTop=Math.max(0, (($(window).height() - boxH) / 2) +
-            $(window).scrollTop()) - 20 + "px";
-
-
-        var pLeft=Math.max(0, (($(window).width() - $(div).outerWidth()) / 2) +
-            $(window).scrollLeft()) + "px";
-
-        $(div).animate({opacity:'0'},0);
-        $(div).animate({
-            height:boxH + "px",
-            top: pTop,
-            left: pLeft,
-            opacity:'1'
-        },700,"easeInOutQuart");
-
-
+        popup(hed, des, img.width, img)
     }
+}
+
+function popup(hed, des, wdth, addObj)
+{
+    header = "<h1 id='workH1' style='display:inline'>"+ hed+"</h1>"
+    description = "<p id='workP'>" + des + "<br><br></p>"
+
+    var divCl = $('<div>').css({
+        float:"right",
+        height: "24px",
+        padding: "7px",
+        "padding-bottom": "0"
+    });
+    $(divCl).addClass("nav")
+    $(divCl).append("&nbsp;&nbsp;закрыть&nbsp;&nbsp;")
+
+
+
+
+    $(divCl).click(function(event)
+    {
+        popupRemove();
+    });
+
+    var div = $('<div>').css({
+        width:wdth+"px",
+        height:0,
+        overflow: "hidden",
+        "background-color": "#303030",
+        padding: "20px"
+    });
+    $(div).center()
+
+
+    $('body').eq(0).append(div);
+
+    $(div).attr("id","close2")
+
+    $(div).append(header)
+    $(div).append(divCl)
+    $(div).append(description)
+
+
+    if(addObj!=null)hght=addObj.height+27;
+    else hght=0
+    hght+=$('#workH1').height()
+    hght+=$('#workP').height()
+
+
+
+    var pTop=Math.max(0, (($(window).height() - hght) / 2) +
+        $(window).scrollTop()) - 20 + "px";
+
+
+    var pLeft=Math.max(0, (($(window).width() - $(div).outerWidth()) / 2) +
+        $(window).scrollLeft()) + "px";
+
+    $(div).animate({opacity:'0'},0);
+    $(div).animate({
+        height:hght + "px",
+        top: pTop,
+        left: pLeft,
+        opacity:'1'
+    },700,"easeInOutQuart");
+
+    if(addObj != null)div.append(addObj)
 }
 
 
@@ -138,10 +145,13 @@ function blackLayer() {
 }
 
 function popupRemove() {
+
+    topPos = parseInt($("#close2").css("top")) + parseInt($("#close2").css("height"))/2
+
     $("#close2").animate({
-            height: $(window).scrollTop() + "px",
+            height: "0px",
             opacity:"0",
-            top: "0px"
+            top: topPos+"px"
         },700,"easeInOutQuart", function(){$("#close2").remove()}
     );
 
@@ -277,7 +287,7 @@ $(document).ready(function() {
         $.get("../get_work/", {w_id:event.target.id, s_id:$(event.target).attr("sid")}, function(data) {
                 // Відобразити результат
             blackLayer();
-            popupServ(data.p, data.h, data.d);
+            popWork(data.p, data.h, data.d);
 
         });
     });
