@@ -3,6 +3,7 @@ from main.models import Staff
 from main.models import Service
 from main.models import Work
 from django.http import HttpResponse
+import watson
 import json
 
 # Create your views here.
@@ -59,3 +60,8 @@ def get_work(request):
 
     answer = json.dumps(results)
     return HttpResponse(answer, content_type="application/json")
+
+def search(request):
+    search_results = watson.search("you")
+    context = {'search_results':search_results}
+    return render(request, 'main/search.html', context)
