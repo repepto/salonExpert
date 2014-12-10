@@ -24,16 +24,15 @@ def services(request):
     servListT = Service.objects.all()
 
     servs=[]
-    serv=[]
-    workT=[]
 
     for service in servListT:
 
-        serv.append(service.header)
-        serv.append(service.description)
+        workT=[]
+        serv=[]
+        serv.append([service.header,service.description,service.id,])
 
         for work in service.work_set.all():
-            workT.append([work.photo_preview.url, work.id, service.id])
+            workT.append([work.photo_preview.url, work.id, service.id,])
 
         serv.append(workT)
         servs.append(serv)
@@ -62,6 +61,6 @@ def get_work(request):
     return HttpResponse(answer, content_type="application/json")
 
 def search(request):
-    search_results = watson.search("you")
+    search_results = watson.search("models")
     context = {'search_results':search_results}
     return render(request, 'main/search.html', context)

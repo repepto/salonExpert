@@ -30,16 +30,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'nested_inline',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'watson',
     'main',
     'redactor',
-    'watson',
+
 )
 
 MIDDLEWARE_CLASSES = (

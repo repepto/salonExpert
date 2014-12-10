@@ -5,25 +5,27 @@
 {%  block a1 %}<span>УСЛУГИ</span>{%  endblock %}
 {%  block content %}
 <section class="width100 left allServices">
+{{ servList.0.2|length }}
 {% for service in servList %}
 <article class="service left">
     <div class="scrollPan">
-        <h1>{{ service.0 }}</h1>
-        {% if service.work_set.all|length > 2 %}
-        <span id="r{{ service.id }}" class="bService right bb na">></span>
-        <span id="l{{ service.id }}" class="bService right bb nav"><</span>
+        <h1>{{ service.0.0 }}</h1>
+        {% if service.1|length > 2 %}
+        <span id="r{{ service.0.2 }}" class="bService right bb na">></span>
+        <span id="l{{ service.0.2 }}" class="bService right bb nav"><</span>
         {% endif %}
         <!--<a href="" class="bService right">&nbsp;&nbsp;подробнее&nbsp;&nbsp;</a>-->
     </div>
     <div class="scrollAbleBox">
-        <div id="s{{ service.id }}" class="scrollAble">
-            {% for work in service.2 %}
+        <div id="s{{ service.0.2 }}" class="scrollAble">
+            {% for work in service.1 %}
+                {{ work|length }}
                 <img class="serviceImg" src={{ work.0 }} id={{ work.1 }}  sid={{ work.2 }} >
             {% endfor %}
         </div>
     </div>
     <div class="serviceDiv">
-        <div class="val">{{ service.1|safe }}</div>
+        <div class="val">{{ service.0.1|safe }}</div>
     </div>
 </article>
 {% endfor %}
