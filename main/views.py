@@ -61,6 +61,8 @@ def get_work(request):
     return HttpResponse(answer, content_type="application/json")
 
 def search(request):
-    search_results = watson.search("models")
-    context = {'search_results':search_results}
+    search_results = watson.search("once")
+    for ind in range(0,len(search_results)):
+        search_results[ind].url = search_results[ind].url.split(',')
+    context = {'search_results':search_results, 'url':search_results[0].url}
     return render(request, 'main/search.html', context)

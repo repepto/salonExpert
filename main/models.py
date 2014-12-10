@@ -44,4 +44,4 @@ class Work(models.Model):
 
 
     def __str__(self):              # __unicode__ on Python 2
-        return "Услуга: " + self.service.header + " (презентация работы)"
+        return self.service.header + ". Презентация работы"

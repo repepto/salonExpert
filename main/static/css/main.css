@@ -292,6 +292,14 @@ nav form
 {
     padding: 20px;
 }
+
+.plr10
+{
+    padding-left: 10px;
+    padding-rightt: 10px;
+    text-align: center;
+}
+
 .width400
 {
     width: 33%;
@@ -304,6 +312,8 @@ nav a
     padding-right: 1.5%;
     padding-left: 1.5%;
 }
+
+
 
 .nav {
     color: #ffffff;
@@ -454,6 +464,28 @@ footer
 {
     width: 100%;
     display: inline-block;
+}
+
+
+.s
+{
+    padding-left: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    float: left;
+}
+
+.s h1
+{
+    margin-bottom:  0px;
+}
+
+.sBlock
+{
+    max-width: 470px;
+    margin-right: 40px;
+    padding: 20px;
+    margin-bottom:10px;
 }
 
 
