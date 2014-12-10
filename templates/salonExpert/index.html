@@ -29,7 +29,7 @@
             <div id="status"></div>
         </div>
 
-         <header class="head fontNarrow">
+         <header id="head" class="fontNarrow">
             <h1 id="logo">
                 <img src="{% static "img/logo.png" %}" alt="Salon Expert - салон красоты" class="logotype">
                 салон красоты
@@ -38,7 +38,7 @@
          </header>
 
 
-         <nav>
+         <nav id="fix">
              {%  block a0 %}<a class="nav" href="../about">САЛОН</a>{%  endblock %}
              {%  block a1 %}<a class="nav" href="../services">УСЛУГИ</a>{%  endblock %}
              {%  block a2 %}<a class="nav" href="../search">АКЦИИ</a>{%  endblock %}

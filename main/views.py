@@ -64,5 +64,5 @@ def search(request):
     search_results = watson.search("once")
     for ind in range(0,len(search_results)):
         search_results[ind].url = search_results[ind].url.split(',')
-    context = {'search_results':search_results, 'url':search_results[0].url}
+    context = {'search_results':search_results}
     return render(request, 'main/search.html', context)

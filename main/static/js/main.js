@@ -1,3 +1,18 @@
+$(function(){
+    $(window).scroll(function() {
+        var top = $(document).scrollTop();
+        if (top < 448) {
+            $("#fix").css({top: '0', position: 'relative'});
+            $("#head").css({"margin-bottom": '0px'});
+        }
+        else {
+            $("#fix").css({top: '0px', position: 'fixed'});
+            $("#head").css({"margin-bottom": '62px'});
+        }
+    });
+});
+
+
 $(document).ready(function()
 {
 

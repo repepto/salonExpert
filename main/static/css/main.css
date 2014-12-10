@@ -392,7 +392,7 @@ nav
     position: relative;
 }
 
-.head
+#head
 {
     background: url(../img/top.png) no-repeat;
     background-position: 0px, 0px;
@@ -402,7 +402,7 @@ nav
     float: left;
 }
 
-.head a
+#head a
 {
     font-size: 14px;
     color: #ffffff;
@@ -426,7 +426,7 @@ nav
     height: 150px;
 }
 
-.head img
+#head img
 {
     margin-bottom: 30px;
 }
