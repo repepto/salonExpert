@@ -65,13 +65,7 @@ cursor:pointer;
     text-decoration: none;
 }
 
-.allServices
-{
-    width: 100%;
-    /*padding-top: 20px;*/
-    /*padding-bottom: 20px;*/
-    background: url("../img/bg_flip.png") repeat-x bottom ;
-}
+
 
 .scrollAble
 {
