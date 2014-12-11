@@ -378,6 +378,7 @@ nav span
 
 nav
 {
+    z-index: 77;
     font-size: 13px;
     background-color: #ff00ff;
     float: left;

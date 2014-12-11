@@ -46,9 +46,9 @@
              {%  block a4 %}<a class="nav" href="#">ЗАПИСАТЬСЯ</a>{%  endblock %}
              {%  block a5 %}<a class="nav" href="#">СЕКРЕТЫ</a>{%  endblock %}
              {%  block a6 %}<a class="nav" href="#" class="lastNav">КОНТАКТЫ</a>{%  endblock %}
-             {%  block a7 %}<form class="to-right">{%  endblock %}
-                 <input type="search">
-                 <a href="#" class="nav but"></a>
+             <form class="to-right" action="../search" method="get">
+                 <input type="search" name="searchText">
+                 <a id="search" href="#" class="nav but"></a>
              </form>
          </nav>
         {%  block content %}  {%  endblock %}

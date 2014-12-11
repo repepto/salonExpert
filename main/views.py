@@ -61,7 +61,7 @@ def get_work(request):
     return HttpResponse(answer, content_type="application/json")
 
 def search(request):
-    search_results = watson.search("once")
+    search_results = watson.search(request.GET.get('searchText'))
     for ind in range(0,len(search_results)):
         search_results[ind].url = search_results[ind].url.split(',')
     context = {'search_results':search_results}
