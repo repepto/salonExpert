@@ -467,6 +467,20 @@ footer
     display: inline-block;
 }
 
+.s1
+{
+    padding-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    float: left;
+    width:600px;
+}
+
+.s1 img
+{
+    padding-right: 10px;
+}
+
 
 .s
 {
@@ -488,6 +502,7 @@ footer
     padding: 20px;
     margin-bottom:10px;
 }
+
 
 
 

@@ -8,7 +8,7 @@ from django.db import models
 # Register your models here.
 
 admin.site.register(Staff)
-#admin.site.register(Services)
+admin.site.register(Secret)
 
 class WorkInline(admin.StackedInline):
     model = Work

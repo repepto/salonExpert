@@ -35,6 +35,20 @@ class Service(models.Model):
         return self.header
 
 
+class Secret(models.Model):
+    header = models.CharField(max_length=40, verbose_name='Услуга')
+    description = RedactorField(
+    verbose_name='Описание',
+    redactor_options={'lang': 'en', 'focus': 'true'},
+    #upload_to='uploads/',
+    allow_file_upload=False,
+    allow_image_upload=True
+    )
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.header
+
+
 class Work(models.Model):
     service = models.ForeignKey(Service)
     photo = models.ImageField()

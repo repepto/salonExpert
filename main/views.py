@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from main.models import Staff
 from main.models import Service
-from main.models import Work
+from main.models import Secret
+#from main.models import Work
 from django.http import HttpResponse
 import watson
 import json
@@ -66,3 +67,27 @@ def search(request):
         search_results[ind].url = search_results[ind].url.split(',')
     context = {'search_results':search_results}
     return render(request, 'main/search.html', context)
+
+def secrets(request):
+    sList = Secret.objects.all()
+
+    sL=[]
+    import re
+    p = re.compile(r'<img.*?>')
+    p = re.compile(r'<a>|</b>')
+
+    for s in sList:
+        ts=p.sub('',s.description)[:500]
+        ts=ts[:ts.rfind(" ")]
+        if(ts.rfind("<a") != -1):
+            if(ts.rfind("</a>") == -1 or ts.rfind("<a") > ts.rfind("</a>")):
+                ts=ts[:ts.rfind("<a")]
+
+        ts+="..."
+
+        s.description=ts
+        sL.append((s.header,s.description,s.id))
+
+
+    context = {'sList':sL}
+    return render(request, 'main/secrets.html', context)
