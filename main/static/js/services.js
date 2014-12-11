@@ -81,7 +81,8 @@ function popup(hed, des, wdth, addObj)
         height:0,
         overflow: "hidden",
         "background-color": "#303030",
-        padding: "20px"
+        padding: "20px",
+        "z-index":778
     });
     $(div).center()
 
@@ -133,7 +134,8 @@ function blackLayer() {
         left: "0px",
         width: ww+"px",
         height: getDocumentHeight(),
-        "background-color": "#000"
+        "background-color": "#000",
+        "z-index":777
     });
 
     $('body').eq(0).append(divB);

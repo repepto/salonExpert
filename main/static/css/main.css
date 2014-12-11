@@ -469,11 +469,18 @@ footer
 
 .s1
 {
-    padding-left: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin-top: 20px;
     margin-bottom: 40px;
+    margin-right: 40px;
+    margin-left: 40px;
     float: left;
     width:450px;
+    border: solid 1px #ffffff;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.2);
+    *background-color: #000;
 }
 
 .s1 img
@@ -482,9 +489,12 @@ footer
 }
 
 .s1 h1{ margin-bottom: 0px;}
-.s1 p,h2,h3,h4,h5{margin-left: 20px;}
+.s1 h2,h3,h4,h5{margin-left: 20px; margin-bottom: -7px; font-size: 19px;}
+.s1 p{margin-left: 25px;}
 
-
+a{
+    color:#ffffff;
+}
 .s
 {
     padding-left: 40px;
