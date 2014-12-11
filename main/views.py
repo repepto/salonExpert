@@ -74,7 +74,6 @@ def secrets(request):
     sL=[]
     import re
     p = re.compile(r'<img.*?>')
-    p = re.compile(r'<a>|</b>')
 
     for s in sList:
         ts=p.sub('',s.description)[:500]

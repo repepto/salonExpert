@@ -473,13 +473,16 @@ footer
     margin-top: 20px;
     margin-bottom: 40px;
     float: left;
-    width:600px;
+    width:450px;
 }
 
 .s1 img
 {
     padding-right: 10px;
 }
+
+.s1 h1{ margin-bottom: 0px;}
+.s1 p,h2,h3,h4,h5{margin-left: 20px;}
 
 
 .s
