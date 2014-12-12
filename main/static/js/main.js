@@ -12,6 +12,172 @@ $(function(){
     });
 });
 
+//____________________________
+
+
+var ua = navigator.userAgent.toLowerCase();
+var isOpera = (ua.indexOf('opera')  > -1);
+var isIE = (!isOpera && ua.indexOf('msie') > -1);
+
+function getDocumentHeight() {
+    return Math.max(document.compatMode != 'CSS1Compat' ? document.body.scrollHeight : document.documentElement.scrollHeight, getViewportHeight());
+}
+
+function getViewportHeight() {
+    return ((document.compatMode || isIE) && !isOpera) ? (document.compatMode == 'CSS1Compat') ? document.documentElement.clientHeight : document.body.clientHeight : (document.parentWindow || document.defaultView).innerHeight;
+}
+
+jQuery.fn.center = function () {
+    this.css("position","absolute");
+    this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
+        $(window).scrollTop()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
+        $(window).scrollLeft()) + "px");
+    return this;
+}
+
+
+function scrollWidth() {
+    var div = $('<div>').css({
+        position: "absolute",
+        top: "0px",
+        left: "0px",
+        width: "100px",
+        height: "100px",
+        visibility: "hidden",
+        overflow: "scroll"
+    });
+
+    $('body').eq(0).append(div);
+
+    var width = div.get(0).offsetWidth - div.get(0).clientWidth;
+
+    div.remove();
+
+    return width;
+}
+
+function popup(hed, des, wdth, addObj)
+{
+    header = "<h1 id='popH1' style='display:inline'>"+ hed+"</h1>"
+    description = "<div id='popD'>" + des + "<br><br></div>"
+
+    var divCl = $('<div>').css({
+        float:"right",
+        height: "24px",
+        padding: "7px",
+        "padding-bottom": "0"
+    });
+    $(divCl).addClass("nav")
+    $(divCl).append("&nbsp;&nbsp;закрыть&nbsp;&nbsp;")
+
+
+
+
+    $(divCl).click(function(event)
+    {
+        popupRemove();
+    });
+
+    var div = $('<div>').css({
+        width:wdth+"px",
+        height:0,
+        overflow: "hidden",
+        "background-color": "#303030",
+        padding: "20px",
+        "z-index":778
+    });
+    $(div).center()
+
+
+    $('body').eq(0).append(div);
+
+    $(div).attr("id","close2")
+
+    $(div).append(header)
+    $(div).append(divCl)
+    $(div).append("<hr style='margin-top:21px'>")
+    $(div).append(description)
+
+
+    if(addObj!=null)hght=addObj.height+27;
+    else hght=0
+    hght+=$('#popH1').outerHeight()
+    hght+=$('#popD').outerHeight() + 11
+
+    var pTop=Math.max(0, (($(window).height() - hght) / 2) +
+        $(window).scrollTop()) - 20 + "px";
+
+    if(hght > $(window).height())
+    {
+        pTop=$(window).scrollTop()
+        bh=getDocumentHeight()
+        dth = pTop + hght - bh + 37
+        if(dth>0)
+        {
+            $("#close1").css({height:(bh+dth)+"px"})
+        }
+    }
+
+
+    var pLeft=Math.max(0, (($(window).width() - $(div).outerWidth()) / 2) +
+        $(window).scrollLeft()) + "px";
+
+    $(div).animate({opacity:'0'},0);
+    $(div).animate({
+        height:hght + "px",
+        top: pTop,
+        left: pLeft,
+        opacity:'1'
+    },700,"easeInOutQuart");
+
+    if(addObj != null)div.append(addObj)
+}
+
+
+function blackLayer() {
+
+    wh = $(window).height();
+    ww = $(window).width();
+
+
+    var divB = $('<div>').css({
+        position: "absolute",
+        top:  "0px",
+        left: "0px",
+        width: ww+"px",
+        height: getDocumentHeight(),
+        "background-color": "#000",
+        "z-index":777
+    });
+
+    $('body').eq(0).append(divB);
+
+    $(divB).animate({opacity:'0'},0);
+    $(divB).animate({opacity:'.87'},700);
+
+    $(divB).attr("id","close1");
+}
+
+function popupRemove() {
+
+    topPos = parseInt($("#close2").css("top")) + parseInt($("#close2").css("height"))/2
+
+    $("#close2").animate({
+            height: "0px",
+            opacity:"0",
+            top: topPos+"px"
+        },700,"easeInOutQuart", function(){$("#close2").remove()}
+    );
+
+    $("#close1").animate({
+            opacity:"0"
+        },700,"easeInOutQuart", function(){$("#close1").remove();}
+    );
+}
+
+//________________
+
 /*$("form").submit(function(event){
 	var error = false;
 

@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     url(r'^about/$', views.about, name='about'),
     url(r'^secrets/$', views.secrets, name='secrets'),
     url(r'^get_work/$', views.get_work, name='get_work'),
+    url(r'^get_secret/$', views.get_secret, name='get_secret'),
     url(r'^search/$', views.search, name='search'),
 )

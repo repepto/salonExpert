@@ -90,3 +90,18 @@ def secrets(request):
 
     context = {'sList':sL}
     return render(request, 'main/secrets.html', context)
+
+def get_secret(request):
+
+    srv = Secret.objects.get(id=request.GET.get('s_id'))
+
+    h=srv.header
+    d=str(srv.description)
+    #d="I'm working on an AJAX filter for a custom post type in Wordpress. It's working perfectly fine however I have one thing that I can't get to work. I want to execute the AJAX function from a script tag in the body (or from body onload if that works better), this way I can tell the function which filters to turn on when loading the page."
+
+    #results = {'param1':request.GET.get('param1'), 'param2':'натиснув його!'}
+    results = {'h':h, 'd':d}
+    #results = {'param1':'aaa', 'param2':'натиснув його!'}
+
+    answer = json.dumps(results)
+    return HttpResponse(answer, content_type="application/json")

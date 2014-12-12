@@ -212,6 +212,8 @@ h1,h2
     font-weight: 100;
 }
 
+h1{font-size: 20px;}
+
 .marginTop10
 {
     position: relative;
@@ -499,11 +501,11 @@ footer
     border-bottom:solid 1px #404c4a;
     padding-bottom: 7px;
 }
-.s1 h2,h3,h4,h5{margin-left: 20px; margin-bottom: -7px; font-size: 19px;}
+.s1 h2,h3,h4,h5{margin-left: 20px; margin-bottom: -7px;}
 .s1 p{margin-left: 25px;}
 
 a{
-    color:#ffffff;
+    color:#ff9dff;
 }
 .s
 {
