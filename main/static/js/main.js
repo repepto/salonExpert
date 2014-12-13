@@ -59,8 +59,8 @@ function scrollWidth() {
 
 function popup(hed, des, wdth, addObj)
 {
-    header = "<h1 style='display:inline'>"+ hed+"</h1>"
-    description = "<p>" + des + "</p>"
+    var header = "<h1 style='display:inline'>"+ hed+"</h1>"
+    var description = "<p>" + des + "</p>"
 
     var divCl = $('<div>').css({
         float:"right",
@@ -89,7 +89,9 @@ function popup(hed, des, wdth, addObj)
     });
     $(div).center()
 
-    var divH = $('<div>')
+    var divH = $('<div>').css({position:"absolute", width:wdth+"px"});
+
+
 
     $('body').eq(0).append(div);
 
@@ -102,16 +104,16 @@ function popup(hed, des, wdth, addObj)
     if(addObj != null)$(divH).append(addObj)
     $(div).append(divH)
 
-    hght=$(divH).outerHeight()
+    var hght=$(divH).outerHeight()
 
     var pTop=Math.max(0, (($(window).height() - hght) / 2) +
         $(window).scrollTop()) - 20 + "px";
 
     if(hght > $(window).height())
     {
-        pTop=$(window).scrollTop()
-        bh=getDocumentHeight()
-        dth = pTop + hght - bh + 37
+        var pTop=$(window).scrollTop()
+        var bh=getDocumentHeight()
+        var dth = pTop + hght - bh + 37
         if(dth>0)
         {
             $("#close1").css({height:(bh+dth)+"px"})

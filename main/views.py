@@ -113,8 +113,4 @@ def getSection(Obj,id_):
     srv = Obj.objects.get(id=id_)
     h=srv.header
     d=str(srv.description)
-    sPos=d.rfind("style=")
-    p1=d[:sPos+7]
-    p2=d[sPos+7:len(d)]
-    d=p1+"position:relative;"+p2
     return json.dumps({'h':h, 'd':d})
