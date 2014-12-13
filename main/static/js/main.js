@@ -59,6 +59,8 @@ function scrollWidth() {
 
 function popup(hed, des, wdth, addObj)
 {
+    $('#pre_loader').fadeIn('slow');
+
     var header = "<h1 style='display:inline'>"+ hed+"</h1>"
     var description = "<p>" + des + "</p>"
 
@@ -109,7 +111,7 @@ function popup(hed, des, wdth, addObj)
 
     $(divH).imagesLoaded(function()
     {
-
+        $('#pre_loader').fadeOut('slow');
         var hght=$(divH).outerHeight()
 
         var pTop=Math.max(0, (($(window).height() - hght) / 2) +
