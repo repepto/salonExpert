@@ -2,6 +2,7 @@ from django.shortcuts import render
 from main.models import Staff
 from main.models import Service
 from main.models import Secret
+from main.models import Promo
 #from main.models import Work
 from django.http import HttpResponse
 import watson
@@ -68,8 +69,9 @@ def search(request):
     context = {'search_results':search_results}
     return render(request, 'main/search.html', context)
 
-def secrets(request):
-    sList = Secret.objects.all()
+def getSections(Obj):
+
+    sList = Obj.objects.all()
 
     sL=[]
     import re
@@ -83,25 +85,36 @@ def secrets(request):
                 ts=ts[:ts.rfind("<a")]
 
         ts+="..."
-
         s.description=ts
         sL.append((s.header,s.description,s.id))
 
 
-    context = {'sList':sL}
+    return {'sList':sL}
+
+
+def secrets(request):
+    context = getSections(Secret)
     return render(request, 'main/secrets.html', context)
 
+def promo(request):
+    context = getSections(Promo)
+    return render(request, 'main/promo.html', context)
+
+
 def get_secret(request):
+    answer = getSection(Secret,request.GET.get('s_id'))
+    return HttpResponse(answer, content_type="application/json")
 
-    srv = Secret.objects.get(id=request.GET.get('s_id'))
+def get_promo(request):
+    answer = getSection(Promo,request.GET.get('s_id'))
+    return HttpResponse(answer, content_type="application/json")
 
+def getSection(Obj,id_):
+    srv = Obj.objects.get(id=id_)
     h=srv.header
     d=str(srv.description)
-    #d="I'm working on an AJAX filter for a custom post type in Wordpress. It's working perfectly fine however I have one thing that I can't get to work. I want to execute the AJAX function from a script tag in the body (or from body onload if that works better), this way I can tell the function which filters to turn on when loading the page."
-
-    #results = {'param1':request.GET.get('param1'), 'param2':'натиснув його!'}
-    results = {'h':h, 'd':d}
-    #results = {'param1':'aaa', 'param2':'натиснув його!'}
-
-    answer = json.dumps(results)
-    return HttpResponse(answer, content_type="application/json")
+    sPos=d.rfind("style=")
+    p1=d[:sPos+7]
+    p2=d[sPos+7:len(d)]
+    d=p1+"position:relative;"+p2
+    return json.dumps({'h':h, 'd':d})

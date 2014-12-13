@@ -59,8 +59,8 @@ function scrollWidth() {
 
 function popup(hed, des, wdth, addObj)
 {
-    header = "<h1 id='popH1' style='display:inline'>"+ hed+"</h1>"
-    description = "<div id='popD'>" + des + "<br><br></div>"
+    header = "<h1 style='display:inline'>"+ hed+"</h1>"
+    description = "<p>" + des + "</p>"
 
     var divCl = $('<div>').css({
         float:"right",
@@ -89,21 +89,20 @@ function popup(hed, des, wdth, addObj)
     });
     $(div).center()
 
+    var divH = $('<div>')
 
     $('body').eq(0).append(div);
 
     $(div).attr("id","close2")
 
-    $(div).append(header)
-    $(div).append(divCl)
-    $(div).append("<hr style='margin-top:21px'>")
-    $(div).append(description)
+    $(divH).append(header)
+    $(divH).append(divCl)
+    $(divH).append("<hr style='margin-top:21px'>")
+    $(divH).append(description)
+    if(addObj != null)$(divH).append(addObj)
+    $(div).append(divH)
 
-
-    if(addObj!=null)hght=addObj.height+27;
-    else hght=0
-    hght+=$('#popH1').outerHeight()
-    hght+=$('#popD').outerHeight() + 11
+    hght=$(divH).outerHeight()
 
     var pTop=Math.max(0, (($(window).height() - hght) / 2) +
         $(window).scrollTop()) - 20 + "px";
@@ -130,8 +129,6 @@ function popup(hed, des, wdth, addObj)
         left: pLeft,
         opacity:'1'
     },700,"easeInOutQuart");
-
-    if(addObj != null)div.append(addObj)
 }
 
 

@@ -9,6 +9,7 @@ from django.db import models
 
 admin.site.register(Staff)
 admin.site.register(Secret)
+admin.site.register(Promo)
 
 class WorkInline(admin.StackedInline):
     model = Work
