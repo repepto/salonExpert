@@ -85,7 +85,8 @@ function popup(hed, des, wdth, addObj)
         overflow: "hidden",
         "background-color": "#303030",
         padding: "20px",
-        "z-index":778
+        "z-index":778,
+        opacity:'0'
     });
     $(div).center()
 
@@ -94,6 +95,8 @@ function popup(hed, des, wdth, addObj)
 
 
     $('body').eq(0).append(div);
+
+
 
     $(div).attr("id","close2")
 
@@ -104,33 +107,37 @@ function popup(hed, des, wdth, addObj)
     if(addObj != null)$(divH).append(addObj)
     $(div).append(divH)
 
-    var hght=$(divH).outerHeight()
-
-    var pTop=Math.max(0, (($(window).height() - hght) / 2) +
-        $(window).scrollTop()) - 20 + "px";
-
-    if(hght > $(window).height())
+    $(divH).imagesLoaded(function()
     {
-        var pTop=$(window).scrollTop()
-        var bh=getDocumentHeight()
-        var dth = pTop + hght - bh + 37
-        if(dth>0)
+
+        var hght=$(divH).outerHeight()
+
+        var pTop=Math.max(0, (($(window).height() - hght) / 2) +
+            $(window).scrollTop()) - 20 + "px";
+
+        if(hght > $(window).height())
         {
-            $("#close1").css({height:(bh+dth)+"px"})
+            var pTop=$(window).scrollTop()
+            var bh=getDocumentHeight()
+            var dth = pTop + hght - bh + 37
+            if(dth>0)
+            {
+                $("#close1").css({height:(bh+dth)+"px"})
+            }
         }
-    }
 
 
-    var pLeft=Math.max(0, (($(window).width() - $(div).outerWidth()) / 2) +
-        $(window).scrollLeft()) + "px";
+        var pLeft=Math.max(0, (($(window).width() - $(div).outerWidth()) / 2) +
+            $(window).scrollLeft()) + "px";
 
-    $(div).animate({opacity:'0'},0);
-    $(div).animate({
-        height:hght + "px",
-        top: pTop,
-        left: pLeft,
-        opacity:'1'
-    },700,"easeInOutQuart");
+        $(div).animate({opacity:'0'},0);
+        $(div).animate({
+            height:hght + "px",
+            top: pTop,
+            left: pLeft,
+            opacity:'1'
+        },700,"easeInOutQuart");
+    })
 }
 
 
