@@ -100,6 +100,9 @@ def promo(request):
     context = getSections(Promo)
     return render(request, 'main/promo.html', context)
 
+def contacts(request):
+    return render(request, 'main/contacts.html')
+
 
 def get_secret(request):
     answer = getSection(Secret,request.GET.get('s_id'))

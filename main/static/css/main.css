@@ -537,7 +537,11 @@ a{
     background: url("../img/bg_flip.png") repeat-x bottom ;
 }
 
-
+#map_canvas{
+    width: 100%;
+    height: 700px;
+    float:left;
+}
 
 
 
