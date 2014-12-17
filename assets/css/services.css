@@ -1,0 +1,100 @@
+.service
+{
+    padding: 34px;
+    padding-bottom: 0;
+    display: left;
+    position: relative;
+    left: 0;
+    /*padding-right: 34px;
+    padding-left: 34px;*/
+    min-width: 280px;
+}
+
+.service hr
+{
+    border: none;
+    background-color: #bababa;
+    color: #bababa;
+    height: 1px;
+}
+
+.serviceDiv
+{
+    vertical-align: middle;
+    overflow: hidden;
+    padding: 7px;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.2);
+    *background-color: #000;
+    margin-top: 10px;
+}
+
+.close
+{
+cursor:pointer;
+}
+
+.scrollPan
+{
+    padding: 10px;
+    background-color: #000;
+    background-color: rgba(0,0,0,0.2);
+    *background-color: #000;
+}
+
+
+
+.service h1
+{
+    display: inline;
+    font-size: 17px;
+    margin-bottom: -40px;
+}
+
+.serviceImg
+{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.service a
+{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+
+.scrollAble
+{
+    position: relative;
+    left: 0;
+}
+.scrollAbleBox
+{
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 10px;
+}
+
+.bService
+{
+    background-color: #ff00ff;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin-left: 10px;
+}
+.bb
+{
+    width: 24px;
+    font-size: 21px;
+}
+
+.na
+{
+    cursor: default;
+    background-color: #b0b0b0;
+}
