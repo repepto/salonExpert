@@ -1,0 +1,10 @@
+{% extends "salonExpert/index.html" %}
+{% load staticfiles %}
+{% block addJS %}
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{% static "js/contacts.js" %}"></script>
+{%  endblock %}
+{%  block content %}
+<div id="map_canvas"></div>
+{%  endblock %}

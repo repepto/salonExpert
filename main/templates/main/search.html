@@ -1,0 +1,28 @@
+{% extends "salonExpert/index.html" %}
+{% load staticfiles %}
+
+
+{%  block content %}
+    <div class="s">
+
+        <h1>Результаты поиска</h1>
+        {% for result in search_results %}
+            <div class="sBlock">
+            <article>
+                {{ result.meta }}
+                <h2>
+                    {{result.title|safe}}
+                </h2>
+                {% if result.description %}
+                    <p>{{result.description|safe}}</p>
+                {% endif %}
+                {% if result.url %}
+                    {% if result.url %}<a class="nav" href="{{result.url.0}}">{% endif %}
+                        &nbsp;&nbsp;{{result.url.1}}&nbsp;&nbsp;
+                    {% if result.url %}</a>{% endif %}
+                {% endif %}
+            </article>
+            </div>
+        {% endfor %}
+    </div>
+{%  endblock %}
