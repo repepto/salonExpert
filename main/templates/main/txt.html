@@ -4,6 +4,10 @@
 {%  block addJS %}<script src="{% static "js/txt.js" %}"></script>{%  endblock %}
 {%  block content %}
     <section class="allServices left">
-
+    {% for cont in sL %}
+        <article>
+        <h1>{{ cont.header }}</h1>
+        </article>
+    {% endfor %}
     </section>
 {% endblock %}

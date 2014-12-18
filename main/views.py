@@ -89,7 +89,7 @@ def getSections(Obj):
         sL.append((s.header,s.description,s.id))
 
 
-    return {'sList':sL}
+    return {'sL':sL}
 
 
 def secrets(request):
