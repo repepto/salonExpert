@@ -1,12 +1,14 @@
 {% extends "salonExpert/index.html" %}
 {% load staticfiles %}
 {%  block title %}Акции, скидки, мероприятия и другие радости жизни{%  endblock %}
-{%  block addJS %}<script src="{% static "js/txt.js" %}"></script>{%  endblock %}
+{%  block addJS %}<script src="{% static 'js/txt.js' %}"></script>{%  endblock %}
 {%  block content %}
     <section class="allServices left">
     {% for cont in sL %}
-        <article>
-        <h1>{{ cont.header }}</h1>
+        <article class="s1">
+        <h1>{{ cont.0 }}</h1>
+        <div class="hgh">{{ cont.1|safe }}</div>
+        <a class="abs nav" id="{{ cont.2 }}">&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
         </article>
     {% endfor %}
     </section>

@@ -1,8 +1,8 @@
 {% extends "salonExpert/index.html" %}
 {% load staticfiles %}
 {%  block title %}Персонал{%  endblock %}
-{%  block addJS %}<script src="{% static "js/staff.js" %}"></script>{%  endblock %}
-{%  block addCSS %}<link rel="stylesheet" href="{% static "css/staff.css" %}">{% endblock %}
+{%  block addJS %}<script src="{% static 'js/staff.js' %}"></script>{%  endblock %}
+{%  block addCSS %}<link rel="stylesheet" href="{% static 'css/staff.css' %}">{% endblock %}
 {%  block a3 %}<span>МАСТЕРА</span>{%  endblock %}
 
 {%  block content %}
@@ -16,13 +16,13 @@
                      <span class="switcher">
                          <span class="fontSize22 fontNarrow marginTop10">{{ employee.name }}</span><br>
                          <span class="marginTop10">{{ employee.occupation }}</span>
-                         <img class="icoBox"  id="{{ employee.id }}" src="{% static "img/boxSwitcher.png" %}">
+                         <img class="icoBox"  id="{{ employee.id }}" src="{% static 'img/boxSwitcher.png' %}">
                      </span>
                 </div>
                 <div class="blackBg" id="o{{ employee.id }}">
                     <span class="top-20"> {{ employee.description|safe }} </span>
                     <a href="">
-                        <img class="signUp" src="{% static "img/signUp.png" %}">
+                        <img class="signUp" src="{% static 'img/signUp.png' %}">
                     </a>
                 </div>
             </div>
@@ -31,7 +31,7 @@
     </div>
 </section>
 <div id="stfB">
-    <span><img  id="stfB1" class="stfBut" src="{% static "img/staff/staffB.png" %}"></span>
-    <span><img id="stfB2" class="stfBut flipX" src="{% static "img/staff/staffB.png" %}"></span>
+    <span><img  id="stfB1" class="stfBut" src="{% static 'img/staff/staffB.png' %}"></span>
+    <span><img id="stfB2" class="stfBut flipX" src="{% static 'img/staff/staffB.png' %}"></span>
 </div>
 {%  endblock %}
