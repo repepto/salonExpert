@@ -5,9 +5,19 @@ from django.conf.urls.static import static
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'salonExpert.views.home', name='home'),
+    url(r'^$', 'main.views.about', name='about'),
+    url(r'^services/$', 'main.views.services', name='services'),
+    url(r'^staff/$', 'main.views.staff', name='staff'),
+    url(r'^about/$', 'main.views.about', name='about'),
+    url(r'^secrets/$', 'main.views.secrets', name='secrets'),
+    url(r'^promo/$', 'main.views.promo', name='promo'),
+    url(r'^contacts/$', 'main.views.contacts', name='contacts'),
+    url(r'^get_work/$', 'main.views.get_work', name='get_work'),
+    url(r'^get_promo/$', 'main.views.get_promo', name='get_promo'),
+    url(r'^get_secret/$', 'main.views.get_secret', name='get_secret'),
+    url(r'^search/$', 'main.views.search', name='search'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^main/', include('main.urls')),
+    #url(r'^main/', include('main.urls')),
     url(r'^redactor/', include('redactor.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
