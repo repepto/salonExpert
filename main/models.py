@@ -16,7 +16,7 @@ class Staff(models.Model):
     allow_image_upload=False,
     )
 
-    def __str__(self):              # __unicode__ on Python 2
+    def __str__(self):
         return self.name
 
 
@@ -31,7 +31,7 @@ class Service(models.Model):
     allow_image_upload=False
     )
 
-    def __str__(self):              # __unicode__ on Python 2
+    def __str__(self):
         return self.header
 
 
@@ -45,7 +45,7 @@ class Secret(models.Model):
     allow_image_upload=True
     )
 
-    def __str__(self):              # __unicode__ on Python 2
+    def __str__(self):
         return self.header
 
 class Promo(models.Model):
@@ -58,7 +58,7 @@ class Promo(models.Model):
     allow_image_upload=True
     )
 
-    def __str__(self):              # __unicode__ on Python 2
+    def __str__(self):
         return self.header
 
 
@@ -70,5 +70,17 @@ class Work(models.Model):
     description = models.TextField()
 
 
-    def __str__(self):              # __unicode__ on Python 2
+    def __str__(self):
         return self.service.header + ". Презентация работы"
+
+class About(models.Model):
+    description = RedactorField(
+    verbose_name='Описание',
+    redactor_options={'lang': 'en', 'focus': 'true'},
+    #upload_to='uploads/',
+    allow_file_upload=False,
+    allow_image_upload=True
+    )
+
+    def __str__(self):
+        return 'О салоне'

@@ -30,22 +30,6 @@ function res(){
     });
 }
 
-$(".abs").click(function(event)
-{
-    blackLayer();
-    gotoScript="get_secret/"
-    sect=$(event.target).attr("name")
-
-    switch (sect)
-    {
-        case "promo":gotoScript="get_promo/";break
-    }
-
-    $.get("../"+gotoScript, {s_id:$(event.target).attr("id")}, function(data) {
-        popup(data.h, data.d, 600, null);
-    });
-})
-
 $(document).ready(function()
 {
     res();

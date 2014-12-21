@@ -3,6 +3,7 @@ from main.models import Staff
 from main.models import Service
 from main.models import Secret
 from main.models import Promo
+from main.models import About
 #from main.models import Work
 from django.http import HttpResponse
 import watson
@@ -13,13 +14,9 @@ import json
 
 def staff(request):
     staffList = Staff.objects.all()
+    print(staffList)
     context = {'staffList':staffList,}
     return render(request, 'main/staff.html', context)
-
-def about(request):
-    ab = 11
-    context = {'staffList':ab,}
-    return render(request, 'main/about.html', context)
 
 
 def services(request):
@@ -69,9 +66,12 @@ def search(request):
     context = {'search_results':search_results}
     return render(request, 'main/search.html', context)
 
-def getSections(Obj):
+def getSections(Obj, num=0):
 
-    sList = Obj.objects.all()
+    if(num!=0):
+        sList = Obj.objects.all()[:num]
+    else:
+        sList = Obj.objects.all()
 
     sL=[]
     import re
@@ -89,15 +89,25 @@ def getSections(Obj):
         sL.append((s.header,s.description,s.id))
 
 
-    return {'sL':sL}
+    #return {'sL':sL}
+    return sL
 
+def about(request):
+    context2 = getSections(Secret, 2)
+    context1 = getSections(Promo, 2)
+    ab = About.objects.all()
+    print (ab)
+    context=(ab,context1,context2)
+    context={'sL':context}
+
+    return render(request, 'main/about.html', context)
 
 def secrets(request):
-    context = getSections(Secret)
+    context = {'sL':getSections(Secret)}
     return render(request, 'main/secrets.html', context)
 
 def promo(request):
-    context = getSections(Promo)
+    context = {'sl':getSections(Promo)}
     return render(request, 'main/promo.html', context)
 
 def contacts(request):

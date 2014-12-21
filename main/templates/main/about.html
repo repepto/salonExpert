@@ -1,27 +1,34 @@
 {% extends "salonExpert/index.html" %}
 {% load staticfiles %}
-{%  block addCSS %}<link rel="stylesheet" href="{% static "css/services.css" %}">{% endblock %}
-{%  block addJS %}<script src="{% static "js/services.js" %}"></script>{%  endblock %}
+{%  block addJS %}<script src="{% static 'js/about.js' %}"></script>{%  endblock %}
 {%  block a0 %}<span>САЛОН</span>{%  endblock %}
 {%  block content %}
-<article class="pad20">
-<h1>Мы сделаем скидку 40% всем желающим!</h1>
-Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray Charles Foundation. Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray C
-</article>
-<article class="left width400 pad20">
-<h1>Мы сделаем скидку 40% всем желающим!</h1>
-Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray Charles Foundation. Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray C Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray Charles Foundation. Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray C
-</article>
-<article class="left width400 pad20">
-<h1>Мы сделаем скидку 40% всем желающим!</h1>
-Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray Charles Foundation. Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray C
-</article>
-<article class="left width400 pad20">
-<h1>Мы сделаем скидку 40% всем желающим!</h1>
-Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray Charles Foundation. Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray C
-</article>
-<article class="left width400 pad20">
-<h1>Мы сделаем скидку 40% всем желающим!</h1>
-Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray Charles Foundation. Мы надеемся, что музыка и благотворительность Рэя Чарльза "продолжает вдохновлять вас в этот праздничный сезон. С Днем Благодарения к вам и вашим от The Ray C
-</article>
+<section class="allServices left">
+	<div class="wdt53 left">
+		<article class="s1">
+			{% for d in sL.0 %}
+			{{ d.description|safe }}
+			{% endfor %}
+		</article>
+	</div>
+
+	<div class="wdt47 left">
+		{% for cont in sL.1 %}
+		<article class="s1">
+			<h1>{{ cont.0 }}</h1>
+			<div class="hgh">{{ cont.1|safe }}</div>
+			<a class="abs nav" id="{{ cont.2 }}">&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
+			<a class="abs1 nav">&nbsp;&nbsp;АКЦИИ&nbsp;&nbsp;</a>
+        </article>
+    	{% endfor %}
+		{% for cont in sL.2 %}
+		<article class="s1">
+			<h1>{{ cont.0 }}</h1>
+			<div class="hgh">{{ cont.1|safe }}</div>
+			<a class="abs nav" id="{{ cont.2 }}">&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
+			<a class="abs1 nav">&nbsp;&nbsp;СЕКРЕТЫ&nbsp;&nbsp;</a>
+        </article>
+    	{% endfor %}
+	</div>
+</section>
 {% endblock %}
