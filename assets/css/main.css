@@ -205,6 +205,19 @@ textarea {
     margin:-100px 0 0 -100px;
 }
 
+#status1 {
+    width:200px;
+    height:200px;
+    position:absolute;
+    background-image:url(../img/preloader.gif);
+    background-repeat:no-repeat;
+    background-position:center;
+    margin:-100px 0 0 -100px;
+    z-index: 8888;
+}
+
+
+
 h1,h2
 {
     /* font-family: 'Titillium Web', 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;*/
@@ -473,7 +486,7 @@ footer
 {
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 70px;
     margin-top: 40px;
     margin-bottom: 20px;
     margin-right: 40px;

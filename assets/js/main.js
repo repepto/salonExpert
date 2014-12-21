@@ -59,8 +59,6 @@ function scrollWidth() {
 
 function popup(hed, des, wdth, addObj)
 {
-    $('#pre_loader').fadeIn('slow');
-
     var header = "<h1 style='display:inline'>"+ hed+"</h1>"
     var description = "<p>" + des + "</p>"
 
@@ -96,7 +94,7 @@ function popup(hed, des, wdth, addObj)
 
 
 
-    $('body').eq(0).append(div);
+    $('body').append(div);
 
 
 
@@ -111,7 +109,8 @@ function popup(hed, des, wdth, addObj)
 
     $(divH).imagesLoaded(function()
     {
-        $('#pre_loader').fadeOut('slow');
+        $('#status1').remove()
+
         var hght=$(divH).outerHeight()
 
         var pTop=Math.max(0, (($(window).height() - hght) / 2) +
@@ -159,7 +158,15 @@ function blackLayer() {
         "z-index":777
     });
 
-    $('body').eq(0).append(divB);
+    var pre = $('<div>')
+    $(pre).attr('id','status1')
+    $(pre).center()
+    $(pre).animate({opacity:'0'},0);
+    $(pre).animate({opacity:'.87'},1400);
+
+
+    $('body').append(divB);
+    $('body').append(pre)
 
     $(divB).animate({opacity:'0'},0);
     $(divB).animate({opacity:'.87'},700);
