@@ -8,13 +8,13 @@ from main.models import About
 from django.http import HttpResponse
 import watson
 import json
+import re
 
 # Create your views here.
 
 
 def staff(request):
     staffList = Staff.objects.all()
-    print(staffList)
     context = {'staffList':staffList,}
     return render(request, 'main/staff.html', context)
 
@@ -42,9 +42,6 @@ def services(request):
 
 def get_work(request):
 
-    if request.GET.get('param1'):
-        message = request.GET.get('param1')
-
     srv = Service.objects.get(id=request.GET.get('s_id'))
     work = srv.work_set.get(id=request.GET.get('w_id'))
 
@@ -52,17 +49,27 @@ def get_work(request):
     d=work.description
     p=work.photo.url
 
-    #results = {'param1':request.GET.get('param1'), 'param2':'натиснув його!'}
     results = {'h':h, 'd':d, 'p':p}
-    #results = {'param1':'aaa', 'param2':'натиснув його!'}
 
     answer = json.dumps(results)
     return HttpResponse(answer, content_type="application/json")
 
+
 def search(request):
+    p = re.compile(r'<img.*?>')
     search_results = watson.search(request.GET.get('searchText'))
+
     for ind in range(0,len(search_results)):
         search_results[ind].url = search_results[ind].url.split(',')
+        if(search_results[ind].content != ''):search_results[ind].content = search_results[ind].content.split(',')
+        ts=p.sub('',search_results[ind].description)[:500]
+        ts=ts[:ts.rfind(" ")]
+        if(ts.rfind("<a") != -1):
+            if(ts.rfind("</a>") == -1 or ts.rfind("<a") > ts.rfind("</a>")):
+                ts=ts[:ts.rfind("<a")]
+        ts+="..."
+        search_results[ind].description=ts
+
     context = {'search_results':search_results}
     return render(request, 'main/search.html', context)
 
@@ -74,7 +81,7 @@ def getSections(Obj, num=0):
         sList = Obj.objects.all()
 
     sL=[]
-    import re
+
     p = re.compile(r'<img.*?>')
 
     for s in sList:
@@ -96,7 +103,6 @@ def about(request):
     context2 = getSections(Secret, 2)
     context1 = getSections(Promo, 2)
     ab = About.objects.all()
-    print (ab)
     context=(ab,context1,context2)
     context={'sL':context}
 

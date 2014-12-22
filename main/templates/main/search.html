@@ -1,25 +1,28 @@
 {% extends "main/base.html" %}
 {% load staticfiles %}
 
-
+{%  block addJS %}<script src="{% static 'js/search.js' %}"></script>{%  endblock %}
 {%  block content %}
     <div class="s">
-
         <h1>Результаты поиска</h1>
         {% for result in search_results %}
-            <div class="sBlock">
+        <div class="sBlock">
             <article>
-                {{ result.meta }}
+                {{ result.content }}
                 <h2>
                     {{result.title|safe}}
                 </h2>
                 {% if result.description %}
-                    <p>{{result.description|safe}}</p>
+                <p>{{result.description|safe}}</p>
                 {% endif %}
                 {% if result.url %}
-                    {% if result.url %}<a class="nav" href="{{result.url.0}}">{% endif %}
-                        &nbsp;&nbsp;{{result.url.1}}&nbsp;&nbsp;
-                    {% if result.url %}</a>{% endif %}
+                {% if result.content %}
+                <a class="nav showWork" id = "{{ result.content.0 }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПРОСМОТР&nbsp;&nbsp;</a>
+                {% else %}
+                <a class="nav" href="{{result.url.0}}">
+                    &nbsp;&nbsp;{{result.url.1}}&nbsp;&nbsp;
+                </a>
+                {% endif %}
                 {% endif %}
             </article>
             </div>

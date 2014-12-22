@@ -57,6 +57,27 @@ function scrollWidth() {
     return width;
 }
 
+function popWork(p_url, hed, des)
+{
+
+    var img = new Image()
+
+    img.src = p_url
+    img.id="dynamic"
+    img.onerror = function (e) { alert('ошибка при загрузке изображения') }
+
+    if(img.complete)
+    {
+        popup(hed, des, img.width, img)
+        return
+    }
+
+    else img.onload = function (e) {
+
+        popup(hed, des, img.width, img)
+    }
+}
+
 function popup(hed, des, wdth, addObj)
 {
     var header = "<h1 style='display:inline'>"+ hed+"</h1>"
