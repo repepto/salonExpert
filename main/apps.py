@@ -8,9 +8,9 @@ class ServiceSearchAdapter(watson.SearchAdapter):
     def get_description(self, obj):
         return obj.description
     def get_url(self, obj):
-        return "../services,ВСЕ УСЛУГИ"
-    def get_content(self, obj):
-        return ''
+        return "../services"
+    def get_meta(self, obj):
+        return "service"
 
 class WorkSearchAdapter(watson.SearchAdapter):
 
@@ -18,12 +18,10 @@ class WorkSearchAdapter(watson.SearchAdapter):
         return obj.header + " <small>(пример работы)</small>"
     def get_description(self, obj):
         return obj.description
-    def get_url(self, obj):
-        return ",ПРОСМОТР"
     def get_content(self, obj):
         return str(obj.id)+','+str(obj.service.id)
     def get_meta(self, obj):
-        return obj.id
+        return "work"
 
 class SecretSearchAdapter(watson.SearchAdapter):
 
@@ -31,10 +29,40 @@ class SecretSearchAdapter(watson.SearchAdapter):
         return obj.header
     def get_description(self, obj):
         return obj.description
-    def get_url(self, obj):
-        return "../services,fffffff"
+    def get_content(self, obj):
+        return str(obj.id)
     def get_meta(self, obj):
-        return obj.id
+        return "secret"
+
+
+class StaffSearchAdapter(watson.SearchAdapter):
+
+    def get_title(self, obj):
+        return obj.name + ". " + obj.occupation
+    def get_description(self, obj):
+        return obj.description
+    def get_content(self, obj):
+        return str(obj.id)
+    def get_meta(self, obj):
+        return "staff"
+
+class AboutSearchAdapter(watson.SearchAdapter):
+
+    def get_description(self, obj):
+        return obj.description
+    def get_meta(self, obj):
+        return "about"
+
+class PromoSearchAdapter(watson.SearchAdapter):
+
+    def get_title(self, obj):
+        return obj.header
+    def get_description(self, obj):
+        return obj.description
+    def get_content(self, obj):
+        return str(obj.id)
+    def get_meta(self, obj):
+        return "promo"
 
 class MainAppConfig(AppConfig):
     name = "main"
@@ -47,3 +75,12 @@ class MainAppConfig(AppConfig):
 
         Secret=self.get_model("Secret")
         watson.register(Secret, SecretSearchAdapter)
+
+        Promo=self.get_model("Promo")
+        watson.register(Promo, PromoSearchAdapter)
+
+        About=self.get_model("About")
+        watson.register(About, AboutSearchAdapter)
+
+        Staff=self.get_model("Staff")
+        watson.register(Staff, StaffSearchAdapter)

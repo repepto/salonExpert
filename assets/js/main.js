@@ -65,7 +65,6 @@ function popWork(p_url, hed, des)
     img.src = p_url
     img.id="dynamic"
     img.onerror = function (e) { alert('ошибка при загрузке изображения') }
-
     if(img.complete)
     {
         popup(hed, des, img.width, img)
@@ -204,6 +203,14 @@ $(".abs").click(function(event)
     switch (sect)
     {
         case "promo":gotoScript="get_promo/";break
+        case "staff":
+            $.get("../get_staff/", {s_id:$(event.target).attr("id")}, function(data) {
+            popWork(data.p, data.h, data.d)
+        }); return; break;
+        case "work":
+            $.get("../get_work/", {w_id:parseInt(event.target.id), s_id:parseInt($(event.target).attr("sid"))}, function(data) {
+            popWork(data.p, data.h, data.d)
+        }); return; break;
     }
 
     $.get("../"+gotoScript, {s_id:$(event.target).attr("id")}, function(data) {

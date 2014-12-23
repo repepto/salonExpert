@@ -60,8 +60,9 @@ def search(request):
     search_results = watson.search(request.GET.get('searchText'))
 
     for ind in range(0,len(search_results)):
-        search_results[ind].url = search_results[ind].url.split(',')
-        if(search_results[ind].content != ''):search_results[ind].content = search_results[ind].content.split(',')
+        if(search_results[ind].meta == 'work'):
+            search_results[ind].content = search_results[ind].content.split(',')
+
         ts=p.sub('',search_results[ind].description)[:500]
         ts=ts[:ts.rfind(" ")]
         if(ts.rfind("<a") != -1):
@@ -113,7 +114,7 @@ def secrets(request):
     return render(request, 'main/secrets.html', context)
 
 def promo(request):
-    context = {'sl':getSections(Promo)}
+    context = {'sL':getSections(Promo)}
     return render(request, 'main/promo.html', context)
 
 def contacts(request):
@@ -126,6 +127,15 @@ def get_secret(request):
 
 def get_promo(request):
     answer = getSection(Promo,request.GET.get('s_id'))
+    return HttpResponse(answer, content_type="application/json")
+
+def get_staff(request):
+
+    stf = Staff.objects.get(id=request.GET.get('s_id'))
+    h=stf.name + ". " + stf.occupation
+    d=stf.description
+    p=stf.photo.url
+    answer = json.dumps({'h':h, 'd':d, 'p':p})
     return HttpResponse(answer, content_type="application/json")
 
 def getSection(Obj,id_):

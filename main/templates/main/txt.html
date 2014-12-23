@@ -1,6 +1,6 @@
 {% extends "main/base.html" %}
 {% load staticfiles %}
-{%  block title %}Акции, скидки, мероприятия и другие радости жизни{%  endblock %}
+{%  block title %}{%  endblock %}
 {%  block addJS %}<script src="{% static 'js/txt.js' %}"></script>{%  endblock %}
 {%  block content %}
     <section class="allServices left">
@@ -8,7 +8,7 @@
         <article class="s1">
         <h1>{{ cont.0 }}</h1>
         <div class="hgh">{{ cont.1|safe }}</div>
-        <a class="abs nav" id="{{ cont.2 }}">&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
+        <a class="abs nav" id="{{ cont.2 }}" {%  block name %}service{% endblock %}>&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
         </article>
     {% endfor %}
     </section>

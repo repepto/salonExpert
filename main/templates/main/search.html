@@ -1,31 +1,34 @@
 {% extends "main/base.html" %}
 {% load staticfiles %}
 
-{%  block addJS %}<script src="{% static 'js/search.js' %}"></script>{%  endblock %}
+{%  block addJS %}
+<script src="{% static 'js/txt.js' %}"></script>
+{%  endblock %}
 {%  block content %}
-    <div class="s">
-        <h1>Результаты поиска</h1>
-        {% for result in search_results %}
-        <div class="sBlock">
-            <article>
-                {{ result.content }}
-                <h2>
-                    {{result.title|safe}}
-                </h2>
-                {% if result.description %}
-                <p>{{result.description|safe}}</p>
-                {% endif %}
-                {% if result.url %}
-                {% if result.content %}
-                <a class="nav showWork" id = "{{ result.content.0 }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПРОСМОТР&nbsp;&nbsp;</a>
-                {% else %}
-                <a class="nav" href="{{result.url.0}}">
-                    &nbsp;&nbsp;{{result.url.1}}&nbsp;&nbsp;
-                </a>
-                {% endif %}
-                {% endif %}
-            </article>
-            </div>
-        {% endfor %}
-    </div>
+    <section class="allServices left">
+    {% for result in search_results %}
+        <article class="s1">
+            <h1>{{result.title|safe}}</h1>
+            <div class="hgh"><p>{{result.description|safe}}</p></div>
+            {% if result.meta == 'work' %}
+                <a class="abs1 nav" href="../services">&nbsp;&nbsp;РАБОТЫ(услуги)&nbsp;&nbsp;</a>
+                <a class="abs nav" name = "work" id = "{{ result.content.0 }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОСМОТРЕТЬ РАБОТУ&nbsp;&nbsp;</a>
+            {% elif result.meta == 'about' %}
+                <a class="abs_ nav" href="../about">&nbsp;&nbsp;О САЛОНЕ&nbsp;&nbsp;</a>
+            {% elif result.meta == 'service' %}
+                <a class="abs_ nav" href="../services">&nbsp;&nbsp;ВСЕ УСЛУГИ&nbsp;&nbsp;</a>
+            {% elif result.meta == 'promo' %}
+                <a class="abs1 nav" href="../promo">&nbsp;&nbsp;ВСЕ АКЦИИ&nbsp;&nbsp;</a>
+                <a class="abs nav" name = "promo" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНЕЕ&nbsp;&nbsp;</a>
+            {% elif result.meta == 'secret' %}
+                <a class="abs1 nav" href="../secrets">&nbsp;&nbsp;ВСЕ СЕКРЕТЫ&nbsp;&nbsp;</a>
+                <a class="abs nav" name = "secret" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНЕЕ&nbsp;&nbsp;</a>
+            {% else %}{{ result.content }}
+                <img src="{{ result.content }}">
+                <a class="abs1 nav" href="../staff">&nbsp;&nbsp;ВСЕ МАСТЕРА&nbsp;&nbsp;</a>
+                <a class="abs nav" name = "staff" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНЕЕ&nbsp;&nbsp;</a>
+            {% endif %}
+        </article>
+    {% endfor %}
+    </section>
 {%  endblock %}

@@ -509,7 +509,7 @@ footer
     position: relative;
 }
 
-.abs{position: absolute; bottom: 20px; right: 20px;}
+.abs, .abs_{position: absolute; bottom: 20px; right: 20px;}
 .abs1{position: absolute; bottom: 20px; left: 20px;}
 
 .s1 img
