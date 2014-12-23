@@ -3,7 +3,7 @@ var maxW=0
 $(window).load(function () {
     $('#pre_loader').fadeOut('slow')
 
-    $('.wdt53').find('img').each(function(indx, element){
+    $('.wdt60').find('img').each(function(indx, element){
         if(maxW<$(element).width())
         {
             maxW=$(element).width()
@@ -21,25 +21,25 @@ function res(){
 
     w = $(window).width();
 
-    wl=w*53/100+'px'
-    wr=w*47/100+'px'
+    wl=w*60/100+'px'
+    wr=w*40/100+'px'
 
     if(parseFloat(wl)<maxW+120)
     {
         if(w-(maxW+120)>300)
         {
-            $('.wdt53').css({'width':(maxW + 120) + 'px'})
-            $('.wdt47').css({'width':(w-(maxW+120)) + 'px'})
+            $('.wdt60').css({'width':(maxW + 120) + 'px'})
+            $('.wdt40').css({'width':(w-(maxW+120)) + 'px'})
         }
         else
         {
-            $('.wdt53').css({'width':'100%'})
-            $('.wdt47').css({'width':'100%'})
+            $('.wdt60').css({'width':'100%'})
+            $('.wdt40').css({'width':'100%'})
         }
     }
     else
     {
-        $('.wdt53').css({'width':wl})
-        $('.wdt47').css({'width':wr})
+        $('.wdt60').css({'width':wl})
+        $('.wdt40').css({'width':wr})
     }
 }

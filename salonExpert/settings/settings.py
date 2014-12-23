@@ -64,7 +64,7 @@ DATABASES = {
 }
 
 
-REDACTOR_OPTIONS = {'lang': 'en','pastePlainText': True}
+REDACTOR_OPTIONS = {'lang': 'en','pastePlainText': True, 'linebreaks' : True}
 REDACTOR_UPLOAD = '/media/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 

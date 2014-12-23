@@ -2,6 +2,17 @@ $(document).ready(function() {
     res();
 });
 
+$(window).load(function()
+{
+    $('#pre_loader').fadeOut('slow');
+
+     $('.serviceImg').each(function (i) {
+         //$(this).slideDown(3000)
+         $(this).delay(i * 300)
+         $(this).fadeTo(200, .5).fadeTo(700, 1)
+    });
+});
+
 var step;
 var allowClick=true;
 
@@ -115,6 +126,11 @@ $(".bb").click(function(event)
 
     $(divId).animate({left:pos-step*dir},800, "easeOutQuart", function(){allowClick=true;});
     allowClick=false;
+});
+
+$(".serviceImg").mouseenter(function(event)
+{
+    $(event.target).fadeTo(200, .5).fadeTo(700, 1)
 });
 
 $(".serviceImg").click(function(event)
