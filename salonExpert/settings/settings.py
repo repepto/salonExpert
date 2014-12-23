@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'watson',
     'main',
     'redactor',
+    'django_cleanup',
 
 )
 
@@ -63,7 +64,7 @@ DATABASES = {
 }
 
 
-REDACTOR_OPTIONS = {'lang': 'en','removeStyles': True}
+REDACTOR_OPTIONS = {'lang': 'en','pastePlainText': True}
 REDACTOR_UPLOAD = '/media/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 

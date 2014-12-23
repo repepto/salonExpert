@@ -90,6 +90,7 @@
     padding: 20px;
     height: 88px;
     user-select: none;
+    cursor: pointer;
 }
 
 .slider

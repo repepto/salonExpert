@@ -265,8 +265,3 @@ $(window).load(function()
 {
     $('#pre_loader').fadeOut('slow');
 });
-
-function scrl() {
-
-    $("body").animate({"scrollTop":'449'},1800);
-}

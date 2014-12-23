@@ -30,6 +30,11 @@ function initialize() {
     infowindow.open(map,marker);
 }
 
+function scrl() {
+
+    $("body").animate({"scrollTop":'449'},1800);
+    $("html").animate({"scrollTop":'449'},1800);
+}
 
 $(window).load(function () {
     $('#pre_loader').fadeOut('slow')

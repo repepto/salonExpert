@@ -1,3 +1,4 @@
+var openDis = true
 $(document).ready(function()
 {
     res();
@@ -21,41 +22,64 @@ $(document).ready(function()
     $(".icoBox").css("-webkit-transition", "all .5s ease-in-out");
     $(".icoBox").removeClass("rotate");
 
-    $(".colorBg").mouseenter(function(event)
+    function open(id)
     {
+        if(!openDis)return
+
         if( $("body").css("margin-top") != "0px")return;
 
         if(openId!="")cls();
 
-        var tempId = event.target.id;
+
+        var tempId = id;
         if(tempId.charAt(0) == "i" || tempId.charAt(0) == "o") tempId = tempId.substr(1, tempId.length - 1)
 
         var divId = "#id" + tempId;
         var id = "#" + tempId;
 
+
         var yPos = $(divId).css("top");
         if(parseInt(yPos) != -68) return;
 
         openId = tempId;
-        $(divId).animate({top:-300, "background-position-y":"-77"},400, "easeOutQuint");
-        //clearTimeout(timeout);
+        $(divId).animate({top:-300, "background-position-y":"-77"},1200, "easeOutQuint");
         $(id).addClass("rotate");
-        //timeout = setTimeout(function()
-       // {
-            //$(".switcher").css("-webkit-transition", "all 2s ease-in-out");
-       //}, 10);
+
+        openDis=false
+        setTimeout(
+          function()
+          {
+            openDis=true
+          }, 10);
+
+    }
+
+    /*$(".colorBg").mouseenter(function(event)
+    {
+        open()
+    });*/
+
+    $(".colorBg").click(function(event)
+    {
+        open(event.target.id)
     });
 
-    $(".blackBg").mouseleave(function(event)
+    $(".marginTop10").click(function(event)
+    {
+        id=$(event.target).parent().parent().attr('id')
+        open(id)
+    });
+
+    /*$(".blackBg").mouseleave(function(event)
     {
         cls();
-    });
+    });*/
 
     function cls ()
     {
         var divId = "#id" + openId;
         var id = "#" + openId;
-        $(divId).animate({top:-68, "background-position-y":"0"},300,"easeOutQuint");
+        $(divId).animate({top:-68, "background-position-y":"0"},1000,"easeOutQuint");
         //clearTimeout(timeout);
         $(id).css("-webkit-transition", "all 0.5s ease-in-out");
         $(id).removeClass("rotate");
