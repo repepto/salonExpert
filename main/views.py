@@ -45,7 +45,7 @@ def get_work(request):
     srv = Service.objects.get(id=request.GET.get('s_id'))
     work = srv.work_set.get(id=request.GET.get('w_id'))
 
-    h=work.header
+    h='<h1 style="display:inline">' + work.header + '</h1>'
     d=work.description
     p=work.photo.url
 
@@ -132,7 +132,7 @@ def get_promo(request):
 def get_staff(request):
 
     stf = Staff.objects.get(id=request.GET.get('s_id'))
-    h=stf.name + ". " + stf.occupation
+    h='<h1 style="display:inline; position:relative; top:-7px">' + stf.name + '</h1><span style = "position:absolute; top:15px; left:0">' + stf.occupation + '</span>'
     d=stf.description
     p=stf.photo.url
     answer = json.dumps({'h':h, 'd':d, 'p':p})
@@ -140,6 +140,6 @@ def get_staff(request):
 
 def getSection(Obj,id_):
     srv = Obj.objects.get(id=id_)
-    h=srv.header
+    h='<h1 style="display:inline">' + srv.header + '</h1>'
     d=str(srv.description)
     return json.dumps({'h':h, 'd':d})

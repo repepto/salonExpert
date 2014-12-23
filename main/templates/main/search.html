@@ -23,8 +23,7 @@
             {% elif result.meta == 'secret' %}
                 <a class="abs1 nav" href="../secrets">&nbsp;&nbsp;ВСЕ СЕКРЕТЫ&nbsp;&nbsp;</a>
                 <a class="abs nav" name = "secret" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНЕЕ&nbsp;&nbsp;</a>
-            {% else %}{{ result.content }}
-                <img src="{{ result.content }}">
+            {% else %}
                 <a class="abs1 nav" href="../staff">&nbsp;&nbsp;ВСЕ МАСТЕРА&nbsp;&nbsp;</a>
                 <a class="abs nav" name = "staff" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНЕЕ&nbsp;&nbsp;</a>
             {% endif %}

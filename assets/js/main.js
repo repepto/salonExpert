@@ -79,14 +79,13 @@ function popWork(p_url, hed, des)
 
 function popup(hed, des, wdth, addObj)
 {
-    var header = "<h1 style='display:inline'>"+ hed+"</h1>"
+    var header = hed
     var description = "<p>" + des + "</p>"
 
     var divCl = $('<div>').css({
-        float:"right",
-        height: "24px",
-        padding: "7px",
-        "padding-bottom": "0"
+        position:"absolute",
+        top: "7px",
+        right: "0"
     });
     $(divCl).addClass("nav")
     $(divCl).append("&nbsp;&nbsp;закрыть&nbsp;&nbsp;")
