@@ -33,10 +33,24 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'watson',
     'main',
-    'redactor',
+    'ckeditor',
     'django_cleanup',
 
 )
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 700,
+        'width': 700,
+    },
+}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -62,11 +76,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, '../db.sqlite3'),
     }
 }
-
-
-REDACTOR_OPTIONS = {'lang': 'en','pastePlainText': True, 'linebreaks' : True}
-REDACTOR_UPLOAD = '/media/'
-REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 
 
 # Internationalization

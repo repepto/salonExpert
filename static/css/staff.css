@@ -1,0 +1,157 @@
+.staff
+{
+    background-image: url("../img/staff/bg.jpg");
+    height: 300px;
+    float: left;
+    overflow: hidden;
+    text-align: right;
+    min-width: 270px;
+    display: inline;
+}
+
+#allStaff
+{
+    overflow: hidden;
+    width: 100%;
+    float:left;
+}
+
+#nobr
+{
+    width: 100%;
+    float: left;
+    position: relative;
+    left: 0;
+}
+
+.stfBut
+{
+    padding: 14px;
+    color: #ff00ff;
+    cursor: pointer;
+}
+
+#stfB2
+{
+    padding: 14px;
+    color: #ff00ff;
+    cursor: pointer;
+}
+
+#stfB
+{
+    height: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+#stfB span
+{
+    width: 120px;
+    display: inline-block;
+}
+
+
+.block5{width: 20%;}
+.block4{width: 25%;}
+.block3{width: 30%;}
+.block2{width: 50%;}
+.block1{width: 100%;}
+
+.staff h1
+{
+    font-size: 18px;
+    font-weight: 100;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    line-height: 17px;
+}
+
+.staff a
+{
+    font-size: 18px;
+    font-weight: 100;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.staff p
+{
+    height: 140px;
+    overflow: hidden;
+    margin-bottom: 7px;
+    width: 100%;
+}
+
+.colorBg
+{
+    background-image: url("../img/staff/bg_0.png");
+    background-repeat: no-repeat;
+    padding: 20px;
+    height: 88px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.slider
+{
+    height: 368px;
+    position: relative;
+    top: -68px;
+    font-size: 13px;
+    line-height: 14px;
+    color: #ffffff;
+    text-align:left;
+}
+
+.blackBg
+{
+    background-color: #000; /* IE 8 */
+    background-color: rgba(0,0,0,0.7);
+    *background-color: #000; /* IE 7 */
+    padding: 20px;
+    padding-bottom: 0;
+    margin-top: -40px;
+    height: 300px;
+}
+
+.blackBg h1
+{
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.signUp
+{
+    position: absolute;
+    top:257px;
+}
+
+
+.icoBox
+{
+    position: absolute;
+    top: 0;
+    right: -10px;
+    top: 7px;
+    padding: 30px;
+
+}
+
+.icoSignUp
+{
+    position: absolute;
+    bottom: 75px;
+    right: 20px;
+}
+
+.toBottom
+{
+    position: relative;
+    bottom: 20px;
+}
+
+
+.rotate {
+    transform: rotateZ(180deg);
+    -webkit-transform: rotateZ(180deg);
+}

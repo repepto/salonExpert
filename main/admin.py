@@ -1,6 +1,4 @@
 from django.contrib import admin
-#from django import forms
-#from redactor.widgets import RedactorEditor
 
 from main.models import *
 from django.db import models

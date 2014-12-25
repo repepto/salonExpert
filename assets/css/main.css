@@ -514,7 +514,7 @@ footer
 
 .s1 img
 {
-    padding-right: 10px;
+    margin: 10px 14px 10px 0;
 }
 
 .s1 h1{
@@ -526,7 +526,7 @@ footer
 }
 .s1 h2,h3,h4,h5{padding-bottom: 4px; margin-bottom: -7px; font-size: 18px;}
 .s1 h2{border-bottom:solid 1px #404c4a;}
-.s1 p{padding-top:10px; padding-bottom: 10px;}
+.s1 p{padding-top:10px; padding-bottom: 10px; padding-left: 10px;}
 
 a{
     color:#ff9dff;

@@ -19,7 +19,7 @@ urlpatterns = patterns('',
     url(r'^search/$', 'main.views.search', name='search'),
     # url(r'^blog/', include('blog.urls')),
     #url(r'^main/', include('main.urls')),
-    url(r'^redactor/', include('redactor.urls')),
+    url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
