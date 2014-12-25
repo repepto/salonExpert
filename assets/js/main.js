@@ -119,6 +119,8 @@ function popup(hed, des, wdth, addObj)
 
     $(div).attr("id","close2")
 
+    $(divH).addClass("dscrp")
+
     $(divH).append(header)
     $(divH).append(divCl)
     $(divH).append("<hr style='margin-top:21px'>")
