@@ -69,6 +69,8 @@ def search(request):
             if(ts.rfind("</a>") == -1 or ts.rfind("<a") > ts.rfind("</a>")):
                 ts=ts[:ts.rfind("<a")]
         ts+="..."
+        if(ts[:2]!='<p'):
+            ts='<p>'+ts+'</p>'
         search_results[ind].description=ts
 
     context = {'search_results':search_results}
@@ -84,9 +86,11 @@ def getSections(Obj, num=0):
     sL=[]
 
     p = re.compile(r'<img.*?>')
+    #p1 = re.compile(r'<p></p>')
 
     for s in sList:
         ts=p.sub('',s.description)[:500]
+        #ts=p1.sub('',ts)
         ts=ts[:ts.rfind(" ")]
         if(ts.rfind("<a") != -1):
             if(ts.rfind("</a>") == -1 or ts.rfind("<a") > ts.rfind("</a>")):

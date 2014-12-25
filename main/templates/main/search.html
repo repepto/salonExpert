@@ -9,7 +9,7 @@
     {% for result in search_results %}
         <article class="s1">
             <h1>{{result.title|safe}}</h1>
-            <div class="hgh"><p>{{result.description|safe}}</p></div>
+            <div class="hgh">{{result.description|safe}}</div>
             {% if result.meta == 'work' %}
                 <a class="abs1 nav" href="../services">&nbsp;&nbsp;РАБОТЫ(услуги)&nbsp;&nbsp;</a>
                 <a class="abs nav" name = "work" id = "{{ result.content.0 }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОСМОТРЕТЬ РАБОТУ&nbsp;&nbsp;</a>
