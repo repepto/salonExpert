@@ -100,7 +100,7 @@ def getSections(Obj, num=0):
         s.description=ts
         sL.append((s.header,s.description,s.id))
 
-
+    sL.reverse()
     #return {'sL':sL}
     return sL
 

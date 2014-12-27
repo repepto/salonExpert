@@ -8,7 +8,7 @@ class Staff(models.Model):
     occupation = models.CharField(max_length=40, verbose_name='что делает')
     photo = models.ImageField(verbose_name='фотография мастера')
     #text = models.TextField(max_length=400)
-    description = RichTextField()
+    description = RichTextField(verbose_name='описание')
 
     def __str__(self):
         return self.name
@@ -17,7 +17,7 @@ class Staff(models.Model):
 
 class Service(models.Model):
     header = models.CharField(max_length=40, verbose_name='Услуга')
-    description = RichTextField()
+    description = RichTextField(verbose_name='Описание')
 
     def __str__(self):
         return self.header
@@ -25,14 +25,14 @@ class Service(models.Model):
 
 class Secret(models.Model):
     header = models.CharField(max_length=40, verbose_name='Заголовок')
-    description = RichTextField()
+    description = RichTextField(verbose_name='Описание')
 
     def __str__(self):
         return self.header
 
 class Promo(models.Model):
     header = models.CharField(max_length=40, verbose_name='Заголовок')
-    description = RichTextField()
+    description = RichTextField(verbose_name='Описание')
 
     def __str__(self):
         return self.header
@@ -40,17 +40,17 @@ class Promo(models.Model):
 
 class Work(models.Model):
     service = models.ForeignKey(Service)
-    photo = models.ImageField()
-    photo_preview = models.ImageField()
-    header = models.CharField(max_length=40)
-    description = models.TextField()
+    photo = models.ImageField(verbose_name='Основное фото')
+    photo_preview = models.ImageField(verbose_name='Фото предпросмотра')
+    header = models.CharField(max_length=40, verbose_name='Заголовок')
+    description = models.TextField('Описание')
 
 
     def __str__(self):
         return self.service.header + ". Презентация работы"
 
 class About(models.Model):
-    description = RichTextField()
+    description = RichTextField(verbose_name='Описание')
 
     def __str__(self):
         return 'О салоне'
