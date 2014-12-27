@@ -1,7 +1,7 @@
 var maxW=0
 
 $(window).load(function () {
-    $('#pre_loader').fadeOut('slow')
+    //$('#pre_loader').fadeOut('slow')
 
     $('.wdt60').find('img').each(function(indx, element){
         if(maxW<$(element).width())

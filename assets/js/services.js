@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 $(window).load(function()
 {
-    $('#pre_loader').fadeOut('slow');
+    //$('#pre_loader').fadeOut('slow');
 
      $('.serviceImg').each(function (i) {
          //$(this).slideDown(3000)

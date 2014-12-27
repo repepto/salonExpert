@@ -261,8 +261,15 @@ $("#search").click(function(){
 });
 
 
-
 $(window).load(function()
 {
-    $('#pre_loader').fadeOut('slow');
+    if(navigator.userAgent.search(/MSIE/) > -1)
+    {
+        $('#pre_loader').remove()
+    }
+    else
+    {
+         $('#pre_loader').fadeOut('slow')
+    }
+
 });

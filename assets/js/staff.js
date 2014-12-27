@@ -1,7 +1,7 @@
 var openDis = true
 $(window).load(function()
 {
-    $('#pre_loader').fadeOut('slow');
+    //$('#pre_loader').fadeOut('slow');
 
      $('.slider').each(function (i) {
          //$(this).slideDown(3000)
