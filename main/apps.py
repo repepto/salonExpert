@@ -53,6 +53,17 @@ class AboutSearchAdapter(watson.SearchAdapter):
     def get_meta(self, obj):
         return "about"
 
+class IndexSearchAdapter(watson.SearchAdapter):
+
+    def get_title(self, obj):
+        return obj.header
+    def get_description(self, obj):
+        return obj.description
+    def get_content(self, obj):
+        return str(obj.logo.url)
+    def get_meta(self, obj):
+        return "index"
+
 class PromoSearchAdapter(watson.SearchAdapter):
 
     def get_title(self, obj):
@@ -84,3 +95,6 @@ class MainAppConfig(AppConfig):
 
         Staff=self.get_model("Staff")
         watson.register(Staff, StaffSearchAdapter)
+
+        Index=self.get_model("Index")
+        watson.register(Index, IndexSearchAdapter)

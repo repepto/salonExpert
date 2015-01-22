@@ -225,6 +225,11 @@ h1,h2
     font-weight: 100;
 }
 
+#fix
+{
+    min-width: 674px;
+}
+
 h1{font-size: 20px;}
 
 .marginTop10
@@ -259,6 +264,8 @@ html
 body
 {
     height:auto;
+
+    min-width: 674px;
 
     background: url('../img/bg.jpg') fixed;
     background-color: #273230;
@@ -408,6 +415,7 @@ nav
     position: relative;
 }
 
+
 #head
 {
     background: url(../img/top.png) no-repeat;
@@ -426,6 +434,7 @@ nav
     position: absolute;
     top: 0;
     right: 0;
+    text-decoration: none;
 }
 
 #logo
@@ -584,19 +593,58 @@ padding: 0;
 
 
 
+.txtPrev
+{
+    float: left;
+    width: 210px;
+    height: 150px;
+}
+
+.logosT
+{
+    float: left;
+    width:220px;
+    margin-left:30px;
+    margin-right: 30px;
+    margin-bottom: 40px;
+}
+
+.h1search
+{
+    text-align: center;
+    padding: 80px;
+}
+
+.logo
+{
+    width: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 180px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.logoS
+{
+    width: 100%;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.logoset
+{
+    position:relative;
+    left:0;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
+.logos
+{
+    overflow: hidden;
+    width: 100%;
+}
 
 
 

@@ -7,7 +7,10 @@
     {% for cont in sL %}
         <article class="s1">
         <h1>{{ cont.0 }}</h1>
-        <div class="hgh">{{ cont.1|safe }}</div>
+        <div class="hgh">
+             <img class="txtPrev" src="{{ cont.3.url }}">
+            {{ cont.1|safe }}
+        </div>
         <a class="abs nav" id="{{ cont.2 }}" {%  block name %}service{% endblock %}>&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
         </article>
     {% endfor %}

@@ -25,6 +25,7 @@ class Service(models.Model):
 
 class Secret(models.Model):
     header = models.CharField(max_length=40, verbose_name='Заголовок')
+    photo = models.ImageField(verbose_name='предпросмотр')
     description = RichTextField(verbose_name='Описание')
 
     def __str__(self):
@@ -32,6 +33,7 @@ class Secret(models.Model):
 
 class Promo(models.Model):
     header = models.CharField(max_length=40, verbose_name='Заголовок')
+    photo = models.ImageField(verbose_name='предпросмотр(210x150)')
     description = RichTextField(verbose_name='Описание')
 
     def __str__(self):
@@ -51,6 +53,15 @@ class Work(models.Model):
 
 class About(models.Model):
     description = RichTextField(verbose_name='Описание')
+
+    def __str__(self):
+        return 'О салоне'
+
+class Index(models.Model):
+
+    logo = models.ImageField(verbose_name='Лготип')
+    header = models.CharField(max_length=40, verbose_name='Заголовок')
+    description = models.TextField('Описание')
 
     def __str__(self):
         return 'О салоне'

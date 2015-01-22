@@ -1,5 +1,5 @@
 function initialize() {
-    var myLatlng = new google.maps.LatLng(50.51042796927612,30.456339865922928);
+    var myLatlng = new google.maps.LatLng(50.43155460151154,30.51915317773819);
     var myOptions = {
         zoom: 14,
         center: myLatlng,
@@ -15,7 +15,7 @@ function initialize() {
         });
 
     var contentString = '<div style="color: #222222; width:207px; text-align: center;"> <h1>SalonExpert</h1>' +
-        'Автозаводская 41, 207.<br> ' +
+        'Киев. ул. Фізкультури 1, корпус 6<br> ' +
         'тел: 80961619878<br>'+
         '<a href = "mailto:gmail@salonexpert.com" style="color: #780078">gmail@salonexpert.com</a><br><br>'+
         '</div>'

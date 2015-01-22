@@ -1,0 +1,28 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+{%  block addJS %}<script src="{% static 'js/index.js' %}"></script>{%  endblock %}
+{%  block content %}
+<section class="allServices left">
+	<section class="logos">
+		<div id="set" class="logoset">
+			{% for cont in sL %}
+			<div class="logo"><img src="{{cont.logo.url}}"></div>
+			{% endfor %}
+			{% for cont in sL %}
+			<div class="logo"><img src="{{cont.logo.url}}"></div>
+			{% endfor %}
+			{% for cont in sL %}
+			<div class="logo"><img src="{{cont.logo.url}}"></div>
+			{% endfor %}
+
+		</div>
+	</section>
+	{% for cont in sL %}
+	<article class="logosT">
+
+		<h1>{{cont.header}}</h1>
+		{{cont.description}}
+	</article>
+    {% endfor %}
+</section>
+{% endblock %}

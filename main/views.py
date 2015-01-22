@@ -4,6 +4,7 @@ from main.models import Service
 from main.models import Secret
 from main.models import Promo
 from main.models import About
+from main.models import Index
 #from main.models import Work
 from django.http import HttpResponse
 import watson
@@ -98,7 +99,8 @@ def getSections(Obj, num=0):
 
         ts+="..."
         s.description=ts
-        sL.append((s.header,s.description,s.id))
+        sL.append((s.header,s.description,s.id,s.photo))
+        print(s.photo)
 
     sL.reverse()
     #return {'sL':sL}
@@ -112,6 +114,12 @@ def about(request):
     context={'sL':context}
 
     return render(request, 'main/about.html', context)
+
+def index(request):
+    context=Index.objects.all()
+    context={'sL':context}
+
+    return render(request, 'main/index.html', context)
 
 def secrets(request):
     context = {'sL':getSections(Secret)}

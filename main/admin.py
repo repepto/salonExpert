@@ -9,6 +9,7 @@ admin.site.register(Staff)
 admin.site.register(Secret)
 admin.site.register(Promo)
 admin.site.register(About)
+admin.site.register(Index)
 
 class WorkInline(admin.StackedInline):
     model = Work
