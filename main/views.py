@@ -58,7 +58,14 @@ def get_work(request):
 
 def search(request):
     p = re.compile(r'<img.*?>')
-    search_results = watson.search(request.GET.get('searchText'))
+    search_results0 = watson.search(request.GET.get('searchText'))
+    search_results1 = watson.search('<h2>'+request.GET.get('searchText'))
+    search_results2 = watson.search('<li>'+request.GET.get('searchText'))
+    search_results3 = watson.search('<strong>'+request.GET.get('searchText'))
+    search_results4 = watson.search('<h3>'+request.GET.get('searchText'))
+    search_results=list(search_results0)+list(search_results1)+list(search_results2)+list(search_results3)+list(search_results4)
+
+
 
     for ind in range(0,len(search_results)):
         if(search_results[ind].meta == 'work'):
