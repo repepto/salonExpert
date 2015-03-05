@@ -314,7 +314,10 @@ nav form
 {
     padding: 20px;
 }
-
+.pad10
+{
+    padding: 10px;
+}
 .plr10
 {
     padding-left: 10px;
@@ -335,14 +338,17 @@ nav a
     padding-left: 1.5%;
 }
 
+.blockLeft
+{
+    display: block;
+    float: left;
+}
+
 
 
 .nav {
     color: #ffffff;
     text-decoration: none;
-
-    display: block;
-    float: left;
     background-color: #ff00ff;
     -webkit-transition: background-color, .7s;
     -moz-transition: background-color, .7s;
@@ -415,6 +421,12 @@ nav
     position: relative;
 }
 
+.navA
+{
+    color: #780078;
+    background-color: #ffffff;
+    text-decoration: none;
+}
 
 #head
 {
@@ -509,6 +521,24 @@ footer
     margin: 10px 14px 10px 0;
 }
 
+.paginator
+{
+    padding-left: 40px;
+    margin-top: 40px;
+}
+
+.pagBottom
+{
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+.table
+{
+    display: table;
+    position: relative;
+}
+
 .s1
 {
     padding-left: 20px;
@@ -532,7 +562,7 @@ footer
 
 .s1 img
 {
-    margin: 10px 14px 10px 0;
+    margin: 10px 14px 10px 10px;
 }
 
 .s1 h1{
@@ -595,8 +625,8 @@ padding: 0;
 .txtPrev
 {
     float: left;
-    width: 210px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
 }
 
 .logosT
@@ -616,9 +646,10 @@ padding: 0;
 
 .hgh li
 {
-    /*margin-left: 20px;*/
-    /*padding-left: 80px;*/
-    list-style-position:inside;
+    /*margin-left: -20px;*/
+    /*list-style-position:inside;*/
+    position: relative;
+    left: 20px;
 }
 
 .logo

@@ -10,6 +10,7 @@ from django.http import HttpResponse
 import watson
 import json
 import re
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
@@ -84,7 +85,7 @@ def search(request):
     context = {'search_results':search_results}
     return render(request, 'main/search.html', context)
 
-def getSections(Obj, num=0):
+def getSections(Obj, num=0, isSecret=False):
 
     if(num!=0):
         sList = Obj.objects.all()[:num]
@@ -97,24 +98,26 @@ def getSections(Obj, num=0):
     #p1 = re.compile(r'<p></p>')
 
     for s in sList:
-        ts=p.sub('',s.description)[:500]
-        #ts=p1.sub('',ts)
-        ts=ts[:ts.rfind(" ")]
-        if(ts.rfind("<a") != -1):
-            if(ts.rfind("</a>") == -1 or ts.rfind("<a") > ts.rfind("</a>")):
-                ts=ts[:ts.rfind("<a")]
+        if(isSecret):
+            ts=p.sub('',s.description)[:500]
+            #ts=p1.sub('',ts)
+            ts=ts[:ts.rfind(" ")]
+            if(ts.rfind("<a") != -1):
+                if(ts.rfind("</a>") == -1 or ts.rfind("<a") > ts.rfind("</a>")):
+                    ts=ts[:ts.rfind("<a")]
+            ts+="..."
+        else:
+            ts=s.description
 
-        ts+="..."
         s.description=ts
         sL.append((s.header,s.description,s.id,s.photo))
-        print(s.photo)
 
     sL.reverse()
     #return {'sL':sL}
     return sL
 
 def about(request):
-    context2 = getSections(Secret, 2)
+    context2 = getSections(Secret, 2, True)
     context1 = getSections(Promo, 2)
     ab = About.objects.all()
     context=(ab,context1,context2)
@@ -128,12 +131,51 @@ def index(request):
 
     return render(request, 'main/index.html', context)
 
+def getPag(page):
+    cnt = getSections(Secret,0,True)
+    paginator = Paginator(cnt, 6)
+    if page == '>>': page = paginator.num_pages
+    pg=0
+    try:
+        context = paginator.page(page)
+        pg=int(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        context = paginator.page(1)
+        pg=1
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        context = paginator.page(paginator.num_pages)
+        pg=paginator.num_pages
+
+    rLim = pg + 3
+    lLim = pg - 3
+
+    while lLim < 1:
+        lLim+=1
+        rLim+=1
+
+    while rLim > paginator.num_pages + 1:
+        if lLim > 1: lLim-=1
+        rLim-=1
+
+    rng=[]
+
+    if paginator.num_pages > 1:
+        rng=list(range(lLim, rLim))
+        if lLim > 1: rng.insert(0,'<<')
+        if rLim < paginator.num_pages + 1: rng.append('>>')
+
+    cont2send = {'sL':context, 'rRange':rng}
+
+    return cont2send
+
+
 def secrets(request):
-    context = {'sL':getSections(Secret)}
-    return render(request, 'main/secrets.html', context)
+    return render(request, 'main/secrets.html', getPag(request.GET.get('page')))
 
 def promo(request):
-    context = {'sL':getSections(Promo)}
+    context = {'sL':getSections(Promo), 'isPromo':True}
     return render(request, 'main/promo.html', context)
 
 def contacts(request):

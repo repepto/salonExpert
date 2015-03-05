@@ -10,7 +10,7 @@
     <div id ="nobr">
         {% for employee in staffList %}
         <article class="staff">
-            <img src={{ employee.photo.url }} alt="{{ employee.name }}">
+            <img width="300px" height="300px" src={{ employee.photo.url }} alt="{{ employee.name }}">
             <div class = "slider" id = "id{{ employee.id }}">
                 <div class="colorBg" id="i{{ employee.id }}">
                      <span class="switcher">

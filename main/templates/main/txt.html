@@ -1,18 +1,58 @@
 {% extends "main/base.html" %}
 {% load staticfiles %}
+{% load setVar %}
+{% load tags %}
 {%  block title %}{%  endblock %}
 {%  block addJS %}<script src="{% static 'js/txt.js' %}"></script>{%  endblock %}
 {%  block content %}
     <section class="allServices left">
-    {% for cont in sL %}
-        <article class="s1">
-        <h1>{{ cont.0 }}</h1>
-        <div class="hgh">
-             <img class="txtPrev" src="{{ cont.3.url }}">
-            {{ cont.1|safe }}
+
+        <div class="paginator">
+            {% if sL.has_previous %}
+            <a class="nav pad10" href="?page={{ sL.previous_page_number }}">&nbsp;&nbsp;<&nbsp;&nbsp;</a>
+            {% endif %}
+
+            {% for i in rRange %}
+                {% ifequal i sL.number %}
+                     <span class="navA pad10">&nbsp;&nbsp;{{i}}&nbsp;&nbsp;</span>
+                {% else %}
+                    <a class="nav pad10" href="?page={{ i }}">&nbsp;&nbsp;{{i}}&nbsp;&nbsp;</a>
+                {% endifequal %}
+            {% endfor %}
+            {% if sL.has_next %}
+            <a class="nav pad10" href="?page={{ sL.next_page_number }}">&nbsp;&nbsp;>&nbsp;&nbsp;</a>
+            {% endif %}
         </div>
-        <a class="abs nav" id="{{ cont.2 }}" {%  block name %}service{% endblock %}>&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
-        </article>
-    {% endfor %}
+        <div class="table">
+        {% for cont in sL %}
+            <article class="s1">
+            <h1>{{ cont.0 }}</h1>
+            <div class="hgh">
+                 <img class="txtPrev" src="{{ cont.3.url }}">
+                {{ cont.1|safe }}
+            </div>
+            <a class="abs nav" id="{{ cont.2 }}" {%  block name %}service{% endblock %}>&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
+            </article>
+        {% endfor %}
+        </div>
+        <div class="paginatort pagBottom">
+            {% if sL.has_previous %}
+            <a class="nav pad10" href="?page={{ sL.previous_page_number }}">&nbsp;&nbsp;<&nbsp;&nbsp;</a>
+            {% endif %}
+
+            {% for i in rRange %}
+                {% ifequal i sL.number %}
+                     <span class="navA pad10">&nbsp;&nbsp;{{i}}&nbsp;&nbsp;</span>
+                {% else %}
+                    <a class="nav pad10" href="?page={{ i }}">&nbsp;&nbsp;{{i}}&nbsp;&nbsp;</a>
+                {% endifequal %}
+            {% endfor %}
+            {% if sL.has_next %}
+            <a class="nav pad10" href="?page={{ sL.next_page_number }}">&nbsp;&nbsp;>&nbsp;&nbsp;</a>
+            {% endif %}
+    </div>
+
     </section>
+
+
 {% endblock %}
