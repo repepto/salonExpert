@@ -24,18 +24,22 @@ function res(){
         if(maxH < h){maxH=h;}
     });
 
+
+
+
+
     $(".s1").each(function(ind, el)
     {
        $(el).height(maxH + 47)
     });
 }
 
-$(document).ready(function()
+$(window).resize(function()
 {
     res();
+});
 
-    $(window).resize(function()
-    {
-        res();
-    });
+$(window).load(function () {
+
+     res();
 });

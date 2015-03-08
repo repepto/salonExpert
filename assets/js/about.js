@@ -1,14 +1,14 @@
 var maxW=0
 
 $(window).load(function () {
-    //$('#pre_loader').fadeOut('slow')
 
-    $('.wdt60').find('img').each(function(indx, element){
-        if(maxW<$(element).width())
-        {
-            maxW=$(element).width()
-        }
+     $('.wdt60').find('img').each(function(indx, element){
+
+         $(element).css({'max-width':$(element).width()})
+         $(element).css({'max-height':$(element).height()})
+
     });
+
     res();
 });
 
@@ -21,25 +21,48 @@ function res(){
 
     w = $(window).width();
 
-    wl=w*60/100+'px'
-    wr=w*40/100+'px'
-
-    if(parseFloat(wl)<maxW+120)
+    if(parseFloat(w) < 770)
     {
-        if(w-(maxW+120)>300)
-        {
-            $('.wdt60').css({'width':(maxW + 120) + 'px'})
-            $('.wdt40').css({'width':(w-(maxW+120)) + 'px'})
-        }
-        else
-        {
-            $('.wdt60').css({'width':'100%'})
-            $('.wdt40').css({'width':'100%'})
-        }
+        $('.wdt60').css({'width':'99%'})
+        $('.wdt40').css({'width':'100%'})
     }
     else
     {
-        $('.wdt60').css({'width':wl})
-        $('.wdt40').css({'width':wr})
+        $('.wdt60').css({'width':'60%'})
+        $('.wdt40').css({'width':'40%'})
     }
+
+    //alert(parseFloat($('.wdt60').width()) + ';;;wdt60');
+   // alert(parseFloat(w) + ';;;w');
+
+    $('.wdt60').children().each(function(indx, element){
+
+        pw=parseFloat($('.wdt60').width()) - 120
+       // alert(pw);
+
+        $(element).css({'width':pw})
+    });
+
+    $('.wdt40').children().each(function(indx, element){
+
+        pw=parseFloat($('.wdt40').width()) - 120
+       // alert(pw);
+
+        $(element).css({'width':pw})
+    });
+
+
+    $('.wdt60').find('img').each(function(indx, element){
+
+        pw=parseFloat($(element).parent().width())
+        curW = parseFloat($(element).width())
+       // alert(pw);
+
+        $(element).css({'width':pw})
+
+        divider = curW/pw
+        hw=parseFloat($(element).height())
+        hw/=divider
+        $(element).css({'height':hw})
+    });
 }

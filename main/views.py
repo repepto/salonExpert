@@ -56,6 +56,37 @@ def get_work(request):
     answer = json.dumps(results)
     return HttpResponse(answer, content_type="application/json")
 
+def get_p(request):
+
+
+
+    srv = Service.objects.get(id=request.GET.get('s_id'))
+
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb: ' + request.GET.get('s_id'))
+
+    h='<h1 style="display:inline">' + srv.header + '</h1>'
+    p='<div class="bigger">' + srv.price + '</div>'
+
+    results = {'h':h, 'p':p}
+
+    answer = json.dumps(results)
+    return HttpResponse(answer, content_type="application/json")
+
+
+def get_p1(request):
+
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb: ' + Service.objects.get(id=request.GET.get('s_id')))
+
+    srv = Service.objects.get(id=request.GET.get('s_id'))
+
+    h='<h1 style="display:inline">' + srv.header + '</h1>'
+    p=srv.price
+
+    results = {'h':h, 'p':p}
+
+    answer = json.dumps(results)
+    return HttpResponse(answer, content_type="application/json")
+
 
 def search(request):
     p = re.compile(r'<img.*?>')
@@ -87,8 +118,11 @@ def search(request):
 
 def getSections(Obj, num=0, isSecret=False):
 
+    print(len(Obj.objects.all()))
+
     if(num!=0):
-        sList = Obj.objects.all()[:num]
+        tmpL=Obj.objects.all()
+        sList = tmpL[len(tmpL) - num:len(tmpL)]
     else:
         sList = Obj.objects.all()
 
@@ -131,8 +165,9 @@ def index(request):
 
     return render(request, 'main/index.html', context)
 
-def getPag(page):
-    cnt = getSections(Secret,0,True)
+def getPag(page, isSecret = False):
+    if(isSecret): cnt = getSections(Secret,0,True)
+    else: cnt = getSections(Promo)
     paginator = Paginator(cnt, 6)
     if page == '>>': page = paginator.num_pages
     pg=0
@@ -166,17 +201,31 @@ def getPag(page):
         if lLim > 1: rng.insert(0,'<<')
         if rLim < paginator.num_pages + 1: rng.append('>>')
 
-    cont2send = {'sL':context, 'rRange':rng}
+    cont2send = {'sL':context, 'rRange':rng, 'isSecret':isSecret}
 
     return cont2send
 
+def secret(request, sId):
+
+    context1 = getSections(Secret, 4, True)
+    ab = Secret.objects.get(id=sId)
+    context=(ab,context1)
+    context={'sL':context}
+
+    return render(request, 'main/secret.html', context)
+
+
+
 
 def secrets(request):
-    return render(request, 'main/secrets.html', getPag(request.GET.get('page')))
+    return render(request, 'main/secrets.html', getPag(request.GET.get('page'), True))
+
+#def promo(request):
+    #context = {'sL':getSections(Promo)}
+    #return render(request, 'main/promo.html', context)
 
 def promo(request):
-    context = {'sL':getSections(Promo), 'isPromo':True}
-    return render(request, 'main/promo.html', context)
+    return render(request, 'main/promo.html', getPag(request.GET.get('page')))
 
 def contacts(request):
     return render(request, 'main/contacts.html')

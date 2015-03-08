@@ -26,6 +26,7 @@ class ServicesAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ['header']}),
         (None, {'fields': ['description']}),
+        (None, {'fields': ['price']}),
     ]
     inlines = [WorkInline]
 

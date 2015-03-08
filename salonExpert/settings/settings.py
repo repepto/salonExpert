@@ -13,14 +13,18 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
+DEBUG = False
+TEMPLATE_DEBUG = False
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'qj66y22w1oqq4$h61bkn&@n36ty@&x)oexe4n$u#$8=1ivp7fk'
 
-ALLOWED_HOSTS = []
-
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -48,6 +52,12 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
         'height': 700,
+        'width': 700,
+        'forcePasteAsPlainText' : True
+    },
+    'short': {
+        'toolbar': 'full',
+        'height': 200,
         'width': 700,
         'forcePasteAsPlainText' : True
     },

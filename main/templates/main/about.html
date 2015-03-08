@@ -3,12 +3,22 @@
 {%  block addJS %}<script src="{% static 'js/about.js' %}"></script>{%  endblock %}
 {%  block a0 %}<span>САЛОН</span>{%  endblock %}
 {%  block content %}
-<section class="allServices left">
+
 	<div class="wdt60 left">
-		<article class="s1">
+		<!--<article class="s1">
 			{% for d in sL.0 %}
+			<h1>Лучший салон красоты в Киеве</h1>
+			 <img class="txtPrev" src="{{ d.photo.url }}"><br>
 			{{ d.description|safe }}
 			{% endfor %}
+		</article>-->
+
+		<article class="s1">
+            <h1>Лучший салон красоты в Киеве</h1>
+            <div class="hgh">
+                 <img class="txtPrev" src="{{ sL.0.0.photo.url }}"><br>
+                {{ sL.0.0.description|safe }}
+            </div>
 		</article>
 	</div>
 
@@ -17,8 +27,7 @@
 		<article class="s1">
 			<h1>{{ cont.0 }}</h1>
 			<div class="hgh">{{ cont.1|safe }}</div>
-			<a class="abs nav" id="{{ cont.2 }}">&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
-			<a class="abs1 nav">&nbsp;&nbsp;АКЦИИ&nbsp;&nbsp;</a>
+			<a class="abs1 nav" href="/promo">&nbsp;&nbsp;АКЦИИ&nbsp;&nbsp;</a>
         </article>
     	{% endfor %}
 		{% for cont in sL.2 %}
@@ -26,9 +35,9 @@
 			<h1>{{ cont.0 }}</h1>
 			<div class="hgh">{{ cont.1|safe }}</div>
 			<a class="abs nav" id="{{ cont.2 }}">&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
-			<a class="abs1 nav">&nbsp;&nbsp;СЕКРЕТЫ&nbsp;&nbsp;</a>
+			<a class="abs1 nav" href="/secrets">&nbsp;&nbsp;СЕКРЕТЫ&nbsp;&nbsp;</a>
         </article>
     	{% endfor %}
 	</div>
-</section>
+
 {% endblock %}

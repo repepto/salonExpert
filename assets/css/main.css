@@ -344,7 +344,23 @@ nav a
     float: left;
 }
 
+.fbl
+{
+    margin-top:40px;
+    margin-left: 20px;
+    float: left;
+}
 
+.service
+{
+    padding: 34px;
+    padding-bottom: 0;
+    position: relative;
+    left: 0;
+    /*padding-right: 34px;
+    padding-left: 34px;*/
+    min-width: 280px;
+}
 
 .nav {
     color: #ffffff;
@@ -560,20 +576,16 @@ footer
 .abs, .abs_{position: absolute; bottom: 20px; right: 20px;}
 .abs1{position: absolute; bottom: 20px; left: 20px;}
 
-.s1 img
-{
-    margin: 10px 14px 10px 10px;
-}
+
 
 .s1 h1{
     margin-bottom: 0;
     margin-top: 7px;
     font-size: 21px;
-    border-bottom:solid 1px #404c4a;
     padding-bottom: 7px;
 }
 .s1 h2,h3,h4,h5{padding-bottom: 4px; margin-bottom: -7px; font-size: 18px;}
-.s1 p{padding-top:10px; padding-bottom: 10px; padding-left: 10px;}
+.s1 p{padding-top:10px; padding-bottom: 10px;}
 
 a{
     color:#ff9dff;
@@ -624,9 +636,9 @@ padding: 0;
 
 .txtPrev
 {
-    float: left;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: auto;
+    height: auto;
 }
 
 .logosT
@@ -648,8 +660,8 @@ padding: 0;
 {
     /*margin-left: -20px;*/
     /*list-style-position:inside;*/
-    position: relative;
-    left: 20px;
+    /*position: relative;
+    left: 20px;*/
 }
 
 .logo

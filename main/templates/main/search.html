@@ -19,22 +19,22 @@
                 {{result.description|safe}}
             </div>
             {% if result.meta == 'work' %}
-                <a class="abs1 nav" href="../services">&nbsp;&nbsp;РАБОТЫ(услуги)&nbsp;&nbsp;</a>
+                <a class="abs1 nav" href="/services">&nbsp;&nbsp;РАБОТЫ(услуги)&nbsp;&nbsp;</a>
                 <a class="abs nav" name = "work" id = "{{ result.content.0 }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОСМОТРЕТЬ РАБОТУ&nbsp;&nbsp;</a>
             {% elif result.meta == 'about' %}
-                <a class="abs_ nav" href="../about">&nbsp;&nbsp;О САЛОНЕ&nbsp;&nbsp;</a>
+                <a class="abs_ nav" href="/about">&nbsp;&nbsp;О САЛОНЕ&nbsp;&nbsp;</a>
             {% elif result.meta == 'service' %}
-                <a class="abs1 nav" href="../services">&nbsp;&nbsp;ВСЕ УСЛУГИ&nbsp;&nbsp;</a>
+                <a class="abs1 nav" href="/services">&nbsp;&nbsp;ВСЕ УСЛУГИ&nbsp;&nbsp;</a>
             {% elif result.meta == 'promo' %}
-                <a class="abs1 nav" href="../promo">&nbsp;&nbsp;ВСЕ АКЦИИ&nbsp;&nbsp;</a>
+                <a class="abs1 nav" href="/promo">&nbsp;&nbsp;ВСЕ АКЦИИ&nbsp;&nbsp;</a>
                 <a class="abs nav" name = "promo" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНЕЕ&nbsp;&nbsp;</a>
             {% elif result.meta == 'secret' %}
-                <a class="abs1 nav" href="../secrets">&nbsp;&nbsp;ВСЕ СЕКРЕТЫ&nbsp;&nbsp;</a>
+                <a class="abs1 nav" href="/secrets">&nbsp;&nbsp;ВСЕ СЕКРЕТЫ&nbsp;&nbsp;</a>
                 <a class="abs nav" name = "secret" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНЕЕ&nbsp;&nbsp;</a>
             {% elif result.meta == 'index' %}
                 <a class="abs1 nav" href="../">&nbsp;&nbsp;ВСЕ БРЕНДЫ&nbsp;&nbsp;</a>
             {% else %}
-                <a class="abs1 nav" href="../staff">&nbsp;&nbsp;ВСЕ МАСТЕРА&nbsp;&nbsp;</a>
+                <a class="abs1 nav" href="/staff">&nbsp;&nbsp;ВСЕ МАСТЕРА&nbsp;&nbsp;</a>
                 <a class="abs nav" name = "staff" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНЕЕ&nbsp;&nbsp;</a>
             {% endif %}
         </article>

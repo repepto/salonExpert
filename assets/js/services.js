@@ -142,3 +142,20 @@ $(".serviceImg").click(function(event)
 
     });
 });
+
+function popPrice(hed, des)
+{
+
+    popup(hed, des, 400)
+
+}
+
+$(".bServiceP").click(function(event)
+{
+    blackLayer();
+    $.get("../get_p/", {s_id:event.target.id}, function(data) {
+            // Відобразити результат
+        popPrice(data.h, data.p)
+
+    });
+});

@@ -44,7 +44,11 @@ cursor:pointer;
     *background-color: #000;
 }
 
-
+.bigger
+{
+    font-size: 14px;
+    font-weight: lighter;
+}
 
 .service h1
 {
@@ -87,6 +91,16 @@ cursor:pointer;
     text-align: center;
     margin-left: 10px;
 }
+
+.bServiceP
+{
+    background-color: #ff00ff;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin-left: 10px;
+}
+
 .bb
 {
     width: 24px;
