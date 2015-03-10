@@ -7,8 +7,10 @@ class ServiceSearchAdapter(watson.SearchAdapter):
         return obj.header
     def get_description(self, obj):
         return obj.description
+    def get_content(self, obj):
+        return str(obj.id)
     def get_url(self, obj):
-        return "../services"
+        return "/services"
     def get_meta(self, obj):
         return "service"
 

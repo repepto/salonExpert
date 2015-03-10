@@ -1,11 +1,6 @@
-$(document).ready(function() {
-    res();
-});
-
 $(window).load(function()
 {
-    //$('#pre_loader').fadeOut('slow');
-
+     res();
      $('.serviceImg').each(function (i) {
          //$(this).slideDown(3000)
          $(this).delay(i * 300)
@@ -139,23 +134,6 @@ $(".serviceImg").click(function(event)
     $.get("../get_work/", {w_id:event.target.id, s_id:$(event.target).attr("sid")}, function(data) {
             // Відобразити результат
         popWork(data.p, data.h, data.d)
-
-    });
-});
-
-function popPrice(hed, des)
-{
-
-    popup(hed, des, 400)
-
-}
-
-$(".bServiceP").click(function(event)
-{
-    blackLayer();
-    $.get("../get_p/", {s_id:event.target.id}, function(data) {
-            // Відобразити результат
-        popPrice(data.h, data.p)
 
     });
 });

@@ -32,7 +32,7 @@ def services(request):
         serv=[]
         serv.append([service.header,service.description,service.id,])
 
-        for work in service.work_set.all():
+        for work in reversed(service.work_set.all()):
             workT.append([work.photo_preview.url, work.id, service.id,])
 
         serv.append(workT)
@@ -58,12 +58,7 @@ def get_work(request):
 
 def get_p(request):
 
-
-
     srv = Service.objects.get(id=request.GET.get('s_id'))
-
-    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb: ' + request.GET.get('s_id'))
-
     h='<h1 style="display:inline">' + srv.header + '</h1>'
     p='<div class="bigger">' + srv.price + '</div>'
 
@@ -73,58 +68,19 @@ def get_p(request):
     return HttpResponse(answer, content_type="application/json")
 
 
-def get_p1(request):
 
-    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb: ' + Service.objects.get(id=request.GET.get('s_id')))
-
-    srv = Service.objects.get(id=request.GET.get('s_id'))
-
-    h='<h1 style="display:inline">' + srv.header + '</h1>'
-    p=srv.price
-
-    results = {'h':h, 'p':p}
-
-    answer = json.dumps(results)
-    return HttpResponse(answer, content_type="application/json")
-
-
-def search(request):
-    p = re.compile(r'<img.*?>')
-    search_results0 = watson.search(request.GET.get('searchText'))
-    search_results1 = watson.search('<h2>'+request.GET.get('searchText'))
-    search_results2 = watson.search('<li>'+request.GET.get('searchText'))
-    search_results3 = watson.search('<strong>'+request.GET.get('searchText'))
-    search_results4 = watson.search('<h3>'+request.GET.get('searchText'))
-    search_results=list(search_results0)+list(search_results1)+list(search_results2)+list(search_results3)+list(search_results4)
+def getSections(Obj, num=0, isSecret=False, curSecret=None):
 
 
 
-    for ind in range(0,len(search_results)):
-        if(search_results[ind].meta == 'work'):
-            search_results[ind].content = search_results[ind].content.split(',')
+    if(curSecret != None):tmpL = Obj.objects.exclude(id=curSecret.id)
+    else: tmpL=Obj.objects.all()
 
-        ts=p.sub('',search_results[ind].description)[:500]
-        ts=ts[:ts.rfind(" ")]
-        if(ts.rfind("<a") != -1):
-            if(ts.rfind("</a>") == -1 or ts.rfind("<a") > ts.rfind("</a>")):
-                ts=ts[:ts.rfind("<a")]
-        ts+="..."
-        if(ts[:2]!='<p'):
-            ts='<p>'+ts+'</p>'
-        search_results[ind].description=ts
+    if(num!=0 and len(tmpL) > num):
 
-    context = {'search_results':search_results}
-    return render(request, 'main/search.html', context)
-
-def getSections(Obj, num=0, isSecret=False):
-
-    print(len(Obj.objects.all()))
-
-    if(num!=0):
-        tmpL=Obj.objects.all()
         sList = tmpL[len(tmpL) - num:len(tmpL)]
     else:
-        sList = Obj.objects.all()
+        sList = tmpL
 
     sL=[]
 
@@ -164,6 +120,86 @@ def index(request):
     context={'sL':context}
 
     return render(request, 'main/index.html', context)
+
+
+def search(request):
+    p = re.compile(r'<img.*?>')
+
+    '''search_results0 = watson.search(request.GET.get('searchText'))
+    search_results1 = watson.search('<h2>'+request.GET.get('searchText'))
+    search_results2 = watson.search('<li>'+request.GET.get('searchText'))
+    search_results3 = watson.search('<strong>'+request.GET.get('searchText'))
+    search_results4 = watson.search('<h3>'+request.GET.get('searchText'))
+    search_results5 = watson.search('<h1>'+request.GET.get('searchText'))
+    search_results6 = watson.search('<p>'+request.GET.get('searchText'))
+    search_results7 = watson.search('<i>'+request.GET.get('searchText'))
+    search_results=list(search_results0)+list(search_results1)+list(search_results2)+\
+                   list(search_results3)+list(search_results4)+\
+                   list(search_results5)+list(search_results6)+list(search_results7)'''
+
+
+    search_results = watson.search(request.GET.get('searchText'))
+
+    for ind in range(0,len(search_results)):
+        if(search_results[ind].meta == 'work'):
+            search_results[ind].content = search_results[ind].content.split(',')
+
+        if(search_results[ind].meta == 'secret' or search_results[ind].meta == 'about'):
+            ts=p.sub('',search_results[ind].description)[:500]
+            ts=ts[:ts.rfind(" ")]
+            if(ts.rfind("<a") != -1):
+                if(ts.rfind("</a>") == -1 or ts.rfind("<a") > ts.rfind("</a>")):
+                    ts=ts[:ts.rfind("<a")]
+            ts+="..."
+        else: ts=search_results[ind].description
+
+        if(ts[:2]!='<p'):
+            ts='<p>'+ts+'</p>'
+        search_results[ind].description=ts
+
+    #context = {'search_results':search_results}
+
+
+
+    page = request.GET.get('page')
+    paginator = Paginator(search_results, 6)
+    if page == '>>': page = paginator.num_pages
+    pg=0
+    try:
+        context = paginator.page(page)
+        pg=int(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        context = paginator.page(1)
+        pg=1
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        context = paginator.page(paginator.num_pages)
+        pg=paginator.num_pages
+
+    rLim = pg + 3
+    lLim = pg - 3
+
+    while lLim < 1:
+        lLim+=1
+        rLim+=1
+
+    while rLim > paginator.num_pages + 1:
+        if lLim > 1: lLim-=1
+        rLim-=1
+
+    rng=[]
+
+    if paginator.num_pages > 1:
+        rng=list(range(lLim, rLim))
+        if lLim > 1: rng.insert(0,'<<')
+        if rLim < paginator.num_pages + 1: rng.append('>>')
+
+    cont2send = {'search_results':context, 'rRange':rng, 'rq':request.GET.get('searchText')}
+
+
+    #return render(request, 'main/search.html', context)
+    return render(request, 'main/search.html', cont2send)
 
 def getPag(page, isSecret = False):
     if(isSecret): cnt = getSections(Secret,0,True)
@@ -207,8 +243,8 @@ def getPag(page, isSecret = False):
 
 def secret(request, sId):
 
-    context1 = getSections(Secret, 4, True)
     ab = Secret.objects.get(id=sId)
+    context1 = getSections(Secret, 4, True, ab)
     context=(ab,context1)
     context={'sL':context}
 

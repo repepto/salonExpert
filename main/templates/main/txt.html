@@ -31,7 +31,7 @@
                 {{ cont.1|safe }}
             </div>
             {% if isSecret %}
-               <a class="abs nav" href="../secret/{{ cont.2 }}" id="{{ cont.2 }}" {%  block name %}service{% endblock %}>&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
+               <a class="abs nav" href="/secret/{{ cont.2 }}" id="{{ cont.2 }}" {%  block name %}service{% endblock %}>&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
             {% endif %}
             </article>
         {% endfor %}

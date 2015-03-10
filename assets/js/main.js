@@ -130,7 +130,7 @@ function popup(hed, des, wdth, addObj)
 
     $(divH).imagesLoaded(function()
     {
-        $('#status1').remove()
+        $('#status1').remove().delay(200)
 
         var hght=$(divH).outerHeight()
 
@@ -273,3 +273,19 @@ $(window).load(function()
     }
 
 });
+
+$(".bServiceP").click(function(event)
+{
+    blackLayer();
+    $.get("/get_p/", {s_id:event.target.id}, function(data) {
+        popPrice(data.h, data.p)
+
+    });
+});
+
+function popPrice(hed, des)
+{
+
+    popup(hed, des, 400)
+
+}

@@ -9,6 +9,23 @@
         {% if search_results|length < 1 %}
         <h1 class="h1search">По вашему запросу ничего не найдено.</h1>
         {% endif %}
+
+    <div class="paginator">
+        {% if search_results.has_previous %}
+        <a class="nav pad10" href="?searchText={{ rq }}&page={{ search_results.previous_page_number }}">&nbsp;&nbsp;<&nbsp;&nbsp;</a>
+        {% endif %}
+
+        {% for i in rRange %}
+            {% ifequal i search_results.number %}
+                 <span class="navA pad10">&nbsp;&nbsp;{{i}}&nbsp;&nbsp;</span>
+            {% else %}
+                <a class="nav pad10" href="?searchText={{ rq }}&page={{ i }}">&nbsp;&nbsp;{{i}}&nbsp;&nbsp;</a>
+            {% endifequal %}
+        {% endfor %}
+        {% if search_results.has_next %}
+        <a class="nav pad10" href="?searchText={{ rq }}&page={{ search_results.next_page_number }}">&nbsp;&nbsp;>&nbsp;&nbsp;</a>
+        {% endif %}
+    </div>
     {% for result in search_results %}
         <article class="s1">
             <h1>{{result.title|safe}}</h1>
@@ -25,17 +42,17 @@
                 <a class="abs_ nav" href="/about">&nbsp;&nbsp;О САЛОНЕ&nbsp;&nbsp;</a>
             {% elif result.meta == 'service' %}
                 <a class="abs1 nav" href="/services">&nbsp;&nbsp;ВСЕ УСЛУГИ&nbsp;&nbsp;</a>
+                <a id="{{ result.content }}" class="bServiceP right nav">&nbsp;&nbsp;ПРАЙС&nbsp;&nbsp;</a>
             {% elif result.meta == 'promo' %}
                 <a class="abs1 nav" href="/promo">&nbsp;&nbsp;ВСЕ АКЦИИ&nbsp;&nbsp;</a>
-                <a class="abs nav" name = "promo" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНЕЕ&nbsp;&nbsp;</a>
             {% elif result.meta == 'secret' %}
                 <a class="abs1 nav" href="/secrets">&nbsp;&nbsp;ВСЕ СЕКРЕТЫ&nbsp;&nbsp;</a>
-                <a class="abs nav" name = "secret" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНЕЕ&nbsp;&nbsp;</a>
+                <a class="abs nav" href="/secret/{{ result.content }}" name = "secret" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНО&nbsp;&nbsp;</a>
             {% elif result.meta == 'index' %}
-                <a class="abs1 nav" href="../">&nbsp;&nbsp;ВСЕ БРЕНДЫ&nbsp;&nbsp;</a>
+                <a class="abs1 nav" href="/">&nbsp;&nbsp;ВСЕ БРЕНДЫ&nbsp;&nbsp;</a>
             {% else %}
                 <a class="abs1 nav" href="/staff">&nbsp;&nbsp;ВСЕ МАСТЕРА&nbsp;&nbsp;</a>
-                <a class="abs nav" name = "staff" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ПОДРОБНЕЕ&nbsp;&nbsp;</a>
+                <a class="abs nav masters" name = "staff" id = "{{ result.content }}" sid="{{ result.content.1 }}">&nbsp;&nbsp;ФОТО&nbsp;&nbsp;</a>
             {% endif %}
         </article>
     {% endfor %}
