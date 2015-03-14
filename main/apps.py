@@ -1,12 +1,13 @@
 from django.apps import AppConfig
 import watson
+from django.utils.html import strip_tags
 
 class ServiceSearchAdapter(watson.SearchAdapter):
 
     def get_title(self, obj):
-        return obj.header
+        return strip_tags(obj.header)
     def get_description(self, obj):
-        return obj.description
+        return strip_tags(obj.description)
     def get_content(self, obj):
         return str(obj.id)
     def get_url(self, obj):
@@ -19,7 +20,7 @@ class WorkSearchAdapter(watson.SearchAdapter):
     def get_title(self, obj):
         return obj.header + " <small>(пример работы)</small>"
     def get_description(self, obj):
-        return obj.description
+        return strip_tags(obj.description)
     def get_content(self, obj):
         return str(obj.id)+','+str(obj.service.id)
     def get_meta(self, obj):
@@ -28,9 +29,9 @@ class WorkSearchAdapter(watson.SearchAdapter):
 class SecretSearchAdapter(watson.SearchAdapter):
 
     def get_title(self, obj):
-        return obj.header
+        return strip_tags(obj.header)
     def get_description(self, obj):
-        return obj.description
+        return strip_tags(obj.description)
     def get_content(self, obj):
         return str(obj.id)
     def get_meta(self, obj):
@@ -42,7 +43,7 @@ class StaffSearchAdapter(watson.SearchAdapter):
     def get_title(self, obj):
         return obj.name + ". " + obj.occupation
     def get_description(self, obj):
-        return obj.description
+        return strip_tags(obj.description)
     def get_content(self, obj):
         return str(obj.id)
     def get_meta(self, obj):
@@ -51,16 +52,16 @@ class StaffSearchAdapter(watson.SearchAdapter):
 class AboutSearchAdapter(watson.SearchAdapter):
 
     def get_description(self, obj):
-        return obj.description
+        return strip_tags(obj.description)
     def get_meta(self, obj):
         return "about"
 
 class IndexSearchAdapter(watson.SearchAdapter):
 
     def get_title(self, obj):
-        return obj.header
+        return strip_tags(obj.header)
     def get_description(self, obj):
-        return obj.description
+        return strip_tags(obj.description)
     def get_content(self, obj):
         return str(obj.logo.url)
     def get_meta(self, obj):
@@ -69,9 +70,9 @@ class IndexSearchAdapter(watson.SearchAdapter):
 class PromoSearchAdapter(watson.SearchAdapter):
 
     def get_title(self, obj):
-        return obj.header
+        return strip_tags(obj.header)
     def get_description(self, obj):
-        return obj.description
+        return strip_tags(obj.description)
     def get_content(self, obj):
         return str(obj.id)
     def get_meta(self, obj):
